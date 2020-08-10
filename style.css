@@ -1,0 +1,158 @@
+/* CSS Variables */
+
+:root {
+    --dark: #222;
+    --darkish: #919191;
+    --light: #FCFBFC;
+    --redAccent: #DA1622;
+    --grayAccent: #C7CFD2;
+}
+
+/* Global Elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light);
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    line-height: 1.6;
+    color: (var(--light));
+}
+
+/* Header Elements */
+
+header {
+    width: 100vw;
+    height: 15vh;
+    background-color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--grayAccent);
+}
+
+header h1{
+    font-size: 4vh;
+}
+
+header h2{
+    font-size: 2vh;
+    padding-left: 10px;
+    color: var(--dark);
+}
+
+#toolSelector {
+    width: 75%;
+    min-width: 250px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--darkish);
+}
+
+.dropDown {
+    height: fit-content;
+}
+
+.fa-caret-square-down {
+    color: var(--redAccent);
+    margin-right: 10px;
+}
+/* Section Elements */
+
+section {
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+section h3{
+    color: var(--light);
+    font-size: 1em;
+    padding: 0px 10px;
+}
+
+#conversionSelector {
+    width: 75%;
+    min-width: 250px;
+    min-height: 30px;
+    background-color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#entry {
+    width: 75%;
+    min-width: 250px;
+    min-height: 40px;
+    height: 5vh;
+}
+
+#entry input {
+    border-style: none;
+    width: 100%;
+    height: 100%;
+    background: var(--redAccent);
+    color: var(--darkish);
+    text-align: center;
+}
+
+.container {
+    min-height: 60px;
+    width: 75%;
+    min-width: 250px;
+    background: var(--dark);
+    color: var(--light);
+}
+
+.container p {
+    font-size: 0.8em;
+}
+
+.returnHeader {
+    background-color: var(--redAccent);
+    height: 40%;
+    text-align: center;
+}
+
+.returnMeasurements {
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.measurement {
+    color: var(--grayAccent);
+}
+
+
+/* Footer Elements */
+
+footer {
+    height: 5vh;
+    background-color: var(--dark);
+    color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#copy {
+    font-size: 1vh;
+}
+
+
+
