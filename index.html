@@ -11,40 +11,43 @@
     <header>
         <h1>Shop APPrentice</h1>
         <div id="toolSelector">
-            <h2>Measurement Converter</h2>
+            <h2 id="toolName">Measurement Converter</h2>
             <div class="dropDown"><i id="tool" class="fas fa-caret-square-down fa-lg"></i></div>
         </div>
     </header>
     <section>
         <div id="conversionSelector">
-            <h3>mm to inches</h3>
-            <div class="dropDown"><i id="conversion" class="fas fa-caret-square-down fa-lg"></i></div>
+            <h3 id="conversion">mm to inches</h3>
+            <div class="dropDown"><i id="conversionDD" class="fas fa-caret-square-down fa-lg"></i></div>
         </div>
-        <div id="entry">
-            <input type="text" placeholder="Enter your measurement here"></input>
-        </div>
+        <form>
+            <div id="entry">
+                <input type="text" id="userEntry" placeholder="Enter your measurement here"></input>
+                <i id="refresh" class="fas fa-times fa-lg"></i>
+            </div>
+        </form>
         <div class="container">
-            <div id="decMM" class='returnHeader'><h4>Decimal (mm)</h4></div>
+            <div class='returnHeader'><h4>Decimal (mm)</h4></div>
             <div class="returnMeasurements">
-                <p class="oneUp">One up</p>
-                <p class="measurement">Conversion</p>
-                <p class="oneDown">One down</p>
+                <p class="oneUp" id="decMMUp">One up</p>
+                <p class="measurement" id="decMM">Conversion</p>
+                <p class="oneDown" id="decMMDown">One down</p>
             </div>
         </div>
         <div class="container">
-            <div id="decInch" class='returnHeader'><h4>Decimal (inch)</h4></div>
+            <div class='returnHeader'><h4>Decimal (inch)</h4></div>
             <div class="returnMeasurements">
-                <p class="oneUp">One up</p>
-                <p class="measurement">Conversion</p>
-                <p class="oneDown">One down</p>
+                <p class="oneUp" id="decInchUp">One up</p>
+                <p class="measurement" id="decInch">Conversion</p>
+                <p class="oneDown" id="decInchDown">One down</p>
             </div>
         </div>
         <div class="container">
-            <div id="fracInch" class='returnHeader'><h4>Fractional (inch)</h4></div>
+            <div class='returnHeader'><h4>Fractional (inch)</h4></div>
             <div class="returnMeasurements">
-                <p class="oneUp">One up</p>
-                <p class="measurement">Conversion</p>
-                <p class="oneDown">One down</p>
+                <p class="oneUp" id="fracInchUp">One up</p>
+                <p class="measurement" id="fracInch">Conversion</p>
+                <p class="oneDown" id="fracInchDown">One down</p>
             </div>
         </div>
     </section>

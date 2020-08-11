@@ -92,11 +92,27 @@ section h3{
     justify-content: space-between;
 }
 
-#entry {
+form {
     width: 75%;
+    min-width: 250px;
+}
+
+#entry {
+    width: 100%;
     min-width: 250px;
     min-height: 40px;
     height: 5vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+
+#refresh {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    padding-right: 10px;
 }
 
 #entry input {
@@ -116,10 +132,6 @@ section h3{
     color: var(--light);
 }
 
-.container p {
-    font-size: 0.8em;
-}
-
 .returnHeader {
     background-color: var(--redAccent);
     height: 40%;
@@ -136,6 +148,12 @@ section h3{
 
 .measurement {
     color: var(--grayAccent);
+    font-size: 1em;
+}
+
+.oneUp, 
+.oneDown {
+    font-size: .8em;
 }
 
 
