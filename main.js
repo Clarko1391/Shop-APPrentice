@@ -12,7 +12,7 @@ const decInchDown = document.getElementById('decInchDown');
 const fracInchUp = document.getElementById('fracInchUp');
 const fracInch = document.getElementById('fracInch');
 const fracInchDown = document.getElementById('fracInchDown');
-const userEntry = document.getElementById('userEntry').addEventListener('click', function (){userInput()});
+const userEntry = document.getElementById('userEntry').addEventListener('input', function (){userInput()});
 document.getElementById('refresh').addEventListener('click', console.log(distance));
 
 // Functions
