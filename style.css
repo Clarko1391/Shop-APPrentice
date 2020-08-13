@@ -76,10 +76,7 @@ header h2{
     padding-left: 10px;
     background-color: var(--darkish);
     z-index: 2;
-    display: none;
 }
-
-
 
 #toolDD {
     position: absolute;
@@ -156,7 +153,6 @@ section h3{
     padding-left: 10px;
     background-color: var(--dark);
     z-index: 2;
-    display: none;
 }
 
 .conDDItem {
@@ -253,8 +249,8 @@ footer {
     font-size: 1vh;
 }
 
-.dropDownActive {
-    display: block;
+.hidden {
+    display: none;
 }
 
 

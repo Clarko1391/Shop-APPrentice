@@ -8,9 +8,9 @@ let decInchDown = document.getElementById('decInchDown');
 let decMM = document.getElementById('decMM');
 let decMMUp = document.getElementById('decMMUp');
 let decMMDown = document.getElementById('decMMDown');
-const toolDropDown = document.getElementById('toolDropDown');
 document.getElementById('toolDD').addEventListener('click', function() {toolMenu()});
-
+document.getElementById('conversionDD').addEventListener('click', function() {converterMenu()});
+// window.onclick = function() {hideDropDown()};
 
 
 // Functions
@@ -22,9 +22,24 @@ function userInput (){
 }
 
 function toolMenu (){
-    toolDropDown.classList.toggle('dropDownActive');
-    console.log('change');
+    document.getElementById(`toolDropDown`).classList.toggle('hidden');
+    ;
 }
+
+function converterMenu (){
+    document.getElementById(`converterDropDown`).classList.toggle('hidden');
+    ;
+}
+
+// function hideDropDown () {
+//     //Hide toolDropDown if user clicks outside dropdown
+//     if (document.getElementById('toolDropDown').classList.contains('hidden')) {
+//         console.log('dropdown hidden');
+//     } else {
+//         document.getElementById('toolDropDown').classList.toggle('hidden');
+//     }
+       
+// }
 
 function convert(measurement) {
     if (conversionSelector === "mm to inches") {
