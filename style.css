@@ -15,6 +15,10 @@
     box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
+
 body {
     background-color: var(--light);
     font-size: 16px;
@@ -49,20 +53,55 @@ header h2{
 #toolSelector {
     width: 75%;
     min-width: 250px;
+    height: 30px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--darkish);
+    position: relative;
 }
 
 .dropDown {
     height: fit-content;
 }
 
+#toolDropDown {
+    width: 100%;
+    min-width: 250px;
+    height: fit-content;
+    position: absolute;
+    left: 0;
+    top: 30px;
+    padding-left: 10px;
+    background-color: var(--darkish);
+    z-index: 2;
+    display: none;
+}
+
+
+
+#toolDD {
+    position: absolute;
+    right: 0;
+    width: 10%;
+    height: 100%;
+    background-color: var(--darkish);
+    border: 0;
+    padding: 0;
+}
+
+#toolDD:hover {
+    background-color: var(--dark);
+}
+
+.toolDDItem {
+    font-size: 2vh;
+    color: var(--dark);
+}
+
 .fa-caret-square-down {
     color: var(--redAccent);
-    margin-right: 10px;
 }
 /* Section Elements */
 
@@ -90,6 +129,39 @@ section h3{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+}
+
+#conversionDD {
+    position: absolute;
+    right: 0;
+    width: 10%;
+    height: 100%;
+    background-color: var(--dark);
+    border: 0;
+    padding: 0;
+}
+
+#conversionDD:hover {
+    background-color: var(--light);
+}
+
+#converterDropDown {
+    width: 100%;
+    min-width: 250px;
+    height: fit-content;
+    position: absolute;
+    left: 0;
+    top: 30px;
+    padding-left: 10px;
+    background-color: var(--dark);
+    z-index: 2;
+    display: none;
+}
+
+.conDDItem {
+    color: var(--light);
+    font-size: 1em;
 }
 
 form {
@@ -105,7 +177,16 @@ form {
     display: flex;
     align-items: center;
     position: relative;
+}
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 #refresh {
@@ -172,5 +253,8 @@ footer {
     font-size: 1vh;
 }
 
+.dropDownActive {
+    display: block;
+}
 
 
