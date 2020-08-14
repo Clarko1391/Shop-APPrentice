@@ -29,7 +29,7 @@ tDD4.addEventListener('click', function (){toolChange()});
 
     // conversionSelector and changers
 let conversion = document.getElementById('conversion');
-let conversionSelector = document.getElementById('conversion').innerText;
+let conversionSelector = document.getElementById('conversion').innerHTML;
 const cDD1 = document.getElementById('cDD1');
 cDD1.addEventListener('click', function() {convChange()});
 const cDD2 = document.getElementById('cDD2');
@@ -106,7 +106,7 @@ function convert(measurement) {
         decInch.innerHTML = measurement;
         answer = measurement/0.0393701;
         decMM.innerHTML = answer
-        
+
         // inches (fractional) to mm conversion
     } else if (conversionSelector === "inches to mm - Fractional") {
 
