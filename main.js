@@ -103,9 +103,22 @@ function convert(measurement) {
 
         // inches (decimal) to mm conversion
     } else if (conversionSelector === "inches to mm - Decimal") {
+        oneUp = (measurement + 0.0625);
+        oneDown = (measurement -  0.0625);
+        answer = measurement / 0.0393701;
+        answerUp = oneUp / 0.0393701;
+        answerDown = oneDown / 0.0393701;
+        answer = +answer.toFixed(2);
+        answerUp = +answerUp.toFixed(2);
+        answerDown = +answerDown.toFixed(2);
+        decMM.innerHTML = answer;
+        decMMUp.innerHTML = answerUp;
+        decMMDown.innerHTML = answerDown;
+        oneUp = +oneUp.toFixed(2);
+        oneDown = +oneDown.toFixed(2);
+        decInchUp.innerHTML = oneUp;
         decInch.innerHTML = measurement;
-        answer = measurement/0.0393701;
-        decMM.innerHTML = answer
+        decInchDown.innerHTML = oneDown;
 
         // inches (fractional) to mm conversion
     } else if (conversionSelector === "inches to mm - Fractional") {
