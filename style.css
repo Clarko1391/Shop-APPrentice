@@ -265,4 +265,17 @@ footer {
     display: none;
 }
 
+/* tapChart page */
 
+.refChart {
+    width: 100vw;
+    height: 85vh;
+    background-color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tdChart {
+    cursor: crosshair;
+}

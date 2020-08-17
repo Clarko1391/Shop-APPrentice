@@ -61,7 +61,8 @@ function converterMenu (){
     //Change header text of ToolSelector based on which option is chosen
 function toolChange () {
     toolName.innerHTML = event.target.innerHTML;
-    document.getElementById('toolDropDown').classList.add('hidden')
+    document.getElementById('toolDropDown').classList.add('hidden');
+    // use an if statement to link HTML page to each individual heading as a function
 }
 
     //Change header text of conversion based on which option is chosen
