@@ -45,7 +45,6 @@ function userInput (){
     userString = userEntry.value;
     measurement = parseInt(userString);
     convert(measurement);
-    console.log(conversionSelector);
 }
 
     // Show/hide Tool Selection Menu by toggling 'hidden' class
@@ -62,10 +61,16 @@ function converterMenu (){
 function toolChange () {
     toolName.innerHTML = event.target.innerHTML;
     document.getElementById('toolDropDown').classList.add('hidden');
+    // if (toolName.innerHTML === "Measurement Converter") {
+    //     window.location.replace('https://clarko1391.github.io/Shop-APPrentice/index.html');
+    // } else if (toolName.innerHTML === "Tap & Die Reference Chart") {
+    //     window.location.replace('https://clarko1391.github.io/Shop-APPrentice/tapChart.html')
+    // }
+
     if (toolName.innerHTML === "Measurement Converter") {
-        window.location.replace('https://clarko1391.github.io/Shop-APPrentice/index.html');
+        window.location.replace('http://127.0.0.1:5501/index.html');
     } else if (toolName.innerHTML === "Tap & Die Reference Chart") {
-        window.location.replace('https://clarko1391.github.io/Shop-APPrentice/tapChart.html')
+        window.location.replace('http://127.0.0.1:5501/tapChart.html');
     }
 }
 
