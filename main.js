@@ -62,7 +62,11 @@ function converterMenu (){
 function toolChange () {
     toolName.innerHTML = event.target.innerHTML;
     document.getElementById('toolDropDown').classList.add('hidden');
-    // use an if statement to link HTML page to each individual heading as a function
+    if (toolName.innerHTML === "Measurement Converter") {
+        window.location.replace('https://clarko1391.github.io/Shop-APPrentice/index.html');
+    } else if (toolName.innerHTML === "Tap & Die Reference Chart") {
+        window.location.replace('https://clarko1391.github.io/Shop-APPrentice/tapChart.html')
+    }
 }
 
     //Change header text of conversion based on which option is chosen
