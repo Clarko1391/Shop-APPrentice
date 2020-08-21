@@ -202,6 +202,7 @@ input[type=number] {
     position: absolute;
     right: 0;
     padding-right: 10px;
+    cursor: pointer;
 }
 
 #entry input {

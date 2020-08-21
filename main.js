@@ -16,6 +16,9 @@ let decMMDown = document.getElementById('decMMDown');
 document.getElementById('toolDD').addEventListener('click', function() {toolMenu()});
 document.getElementById('conversionDD').addEventListener('click', function() {converterMenu()});
 
+    //Refresh button
+document.getElementById('refresh').addEventListener('click', function(){refresh()});
+
     // toolSelector and changers
 let toolName = document.getElementById('toolName');
 const tDD1 = document.getElementById('tDD1');
@@ -42,9 +45,20 @@ cDD3.addEventListener('click', function() {convChange()});
 
     // constantly grab user input for math functions
 function userInput (){
-    userString = userEntry.value;
-    measurement = parseInt(userString);
-    convert(measurement);
+    if (conversionSelector === "mm to inches" || conversionSelector === 'inches to mm - Decimal') {
+        userString = userEntry.value;
+        measurement = parseInt(userString);
+        convert(measurement);
+    } else if (conversionSelector === "inches to mm - Fractional") {
+        userString = userEntry.value;
+        measurement = math.fraction(userString);
+        console.log(userString);
+    } 
+    
+}
+
+function refresh() {
+    document.getElementById('userEntry').value = '';
 }
 
     // Show/hide Tool Selection Menu by toggling 'hidden' class
