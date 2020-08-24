@@ -11,6 +11,9 @@ let decInchDown = document.getElementById('decInchDown');
 let decMM = document.getElementById('decMM');
 let decMMUp = document.getElementById('decMMUp');
 let decMMDown = document.getElementById('decMMDown');
+let fracInch = document.getElementById('fracInch');
+let fracInchUp = document.getElementById('fracInchUp');
+let fracInchDown = document.getElementById('fracInchDown');
 
     //dropdown menu divs
 document.getElementById('toolDD').addEventListener('click', function() {toolMenu()});
@@ -52,7 +55,8 @@ function userInput (){
     } else if (conversionSelector === "inches to mm - Fractional") {
         userString = userEntry.value;
         measurement = math.fraction(userString);
-        console.log(userString);
+        measurement = math.number(measurement);
+        convert(measurement);
     } 
     
 }
@@ -92,7 +96,8 @@ function toolChange () {
 function convChange () {
     conversionSelector = event.target.innerHTML;
     conversion.innerHTML = conversionSelector;
-    document.getElementById('converterDropDown').classList.add('hidden')
+    document.getElementById('converterDropDown').classList.add('hidden');
+    console.log(conversionSelector);
 }
 
     //Hide dropdown menu if user clicks outside of it (THIS IS CURRENTLY BROKEN)
@@ -145,8 +150,11 @@ function convert(measurement) {
         decInchDown.innerHTML = oneDown;
 
         // inches (fractional) to mm conversion
-    } else if (conversionSelector === "inches to mm - Fractional") {
-
+    } else {
+        answer = measurement / 0.0393701;
+        answer = +answer.toFixed(2);
+        decMM.innerHTML = answer;
+        fracInch.innerHTML = userString;
     }
 }
 
