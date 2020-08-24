@@ -272,7 +272,7 @@ footer {
 
 /* tapChart page */
 
-.refChart {
+.tapChart {
     width: 100vw;
     height: 85vh;
     background-color: var(--light);

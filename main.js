@@ -21,6 +21,10 @@ let fracInchDown = document.getElementById('fracInchDown');
 document.getElementById('toolDD').addEventListener('click', function() {toolMenu()});
 document.getElementById('conversionDD').addEventListener('click', function() {converterMenu()});
 
+    // Event listener to close dropdown menu if user clicks outside
+window.addEventListener('click', function(){hideDropDown()});
+let i = 0;
+
     //Refresh button
 document.getElementById('refresh').addEventListener('click', function(){refresh()});
 
@@ -45,6 +49,12 @@ cDD2.addEventListener('click', function() {convChange()});
 const cDD3 = document.getElementById('cDD3');
 cDD3.addEventListener('click', function() {convChange()});
 
+    // Page selectors (section tags)
+const cSBody = document.getElementById('cSBody');
+const tCBody = document.getElementById('tCBody');
+const wSBody = document.getElementById('wSBody');
+const dSBody = document.getElementById('dSBody');
+
 
 // Functions
 
@@ -63,8 +73,18 @@ function userInput (){
     
 }
 
+    // Remove user input and reset output values to original display
 function refresh() {
     document.getElementById('userEntry').value = '';
+    decInch.innerHTML = "Conversion";
+    decInchUp.innerHTML = "One up";
+    decInchDown.innerHTML = "One down";
+    decMM.innerHTML = "Conversion";
+    decMMUp.innerHTML = "One up";
+    decMMDown.innerHTML = "One down";
+    fracInch.innerHTML = "Conversion";
+    fracInchUp.innerHTML = "One up";
+    fracInchDown.innerHTML = "One down";
 }
 
     // Show/hide Tool Selection Menu by toggling 'hidden' class
@@ -81,16 +101,30 @@ function converterMenu (){
 function toolChange () {
     toolName.innerHTML = event.target.innerHTML;
     document.getElementById('toolDropDown').classList.add('hidden');
-    // if (toolName.innerHTML === "Measurement Converter") {
-    //     window.location.replace('https://clarko1391.github.io/Shop-APPrentice/index.html');
-    // } else if (toolName.innerHTML === "Tap & Die Reference Chart") {
-    //     window.location.replace('https://clarko1391.github.io/Shop-APPrentice/tapChart.html')
-    // }
-
-    if (toolName.innerHTML === "Measurement Converter") {
-        window.location.replace('http://127.0.0.1:5501/index.html');
-    } else if (toolName.innerHTML === "Tap & Die Reference Chart") {
-        window.location.replace('http://127.0.0.1:5501/tapChart.html');
+    switch (toolName.innerHTML) {
+        case "Measurement Converter":
+            cSBody.classList.remove('hidden');
+            tCBody.classList.add('hidden');
+            wSBody.classList.add('hidden');
+            dSBody.classList.add('hidden');
+            break;
+        case "Tap and Die Chart":
+            cSBody.classList.add('hidden');
+            tCBody.classList.remove('hidden');
+            wSBody.classList.add('hidden');
+            dSBody.classList.add('hidden');
+            break;
+        case "Wrench Size Chart":
+            cSBody.classList.add('hidden');
+            tCBody.classList.add('hidden');
+            wSBody.classList.remove('hidden');
+            dSBody.classList.add('hidden');
+            break;
+        case "Drill Bit Size Chart":
+            cSBody.classList.add('hidden');
+            tCBody.classList.add('hidden');
+            wSBody.classList.add('hidden');
+            dSBody.classList.remove('hidden');
     }
 }
 
@@ -101,20 +135,24 @@ function convChange () {
     document.getElementById('converterDropDown').classList.add('hidden');
 }
 
-// function fracDisplay (fracValue) {
-//     fracAnswer = fracValue.n + "/" + fracValue.d;
-//     console.log(fracAnswer);
-//     }
+    //Hide dropdown menu if user clicks outside of it
+function hideDropDown () {
+    document.getElementById('toolDD').addEventListener('click', function(){clear()});
+    document.getElementById('conversionDD').addEventListener('click', function(){clear()});
+    if (i >= 1 && !document.getElementById('toolDropDown').classList.contains('hidden')) {
+        document.getElementById('toolDropDown').classList.toggle('hidden');
+        i = 0;
+    } else if (i >= 1 && !document.getElementById('converterDropDown').classList.contains('hidden')) {
+        document.getElementById('converterDropDown').classList.toggle('hidden');
+        i = 0;
+    } else{
+        i++;
+    }
 
-    //Hide dropdown menu if user clicks outside of it (THIS IS CURRENTLY BROKEN)
-// function hideDropDown () {
-//     //Hide toolDropDown if user clicks outside dropdown
-//     if (document.getElementById('toolDropDown').classList.contains('hidden')) {
-//         console.log('dropdown hidden');
-//     } else {
-//         document.getElementById('toolDropDown').classList.toggle('hidden');
-//     }  
-// }
+    function clear () {
+        i = 0;
+    }    
+}
 
     //Math functions
 function convert(measurement) {

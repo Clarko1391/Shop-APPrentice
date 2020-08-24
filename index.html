@@ -18,14 +18,14 @@
             <div id="toolDropDown" class="hidden">
                 <ul>
                     <li id="tDD1" class="toolDDItem">Measurement Converter</li>
-                    <li id="tDD2" class="toolDDItem">Tap & Die Reference Chart</li>
-                    <li id="tDD3" class="toolDDItem">Reference 2</li>
-                    <li id="tDD4" class="toolDDItem">Reference 3</li>
+                    <li id="tDD2" class="toolDDItem">Tap and Die Chart</li>
+                    <li id="tDD3" class="toolDDItem">Wrench Size Chart</li>
+                    <li id="tDD4" class="toolDDItem">Drill Bit Size Chart</li>
                 </ul>
             </div>
         </div>
     </header>
-    <section>
+    <section id = cSBody>
         <div id="conversionSelector">
             <h3 id="conversion">mm to inches</h3>
             <button id="conversionDD">
@@ -70,6 +70,17 @@
                 <p class="oneUp" id="fracInchUp">One up</p>
             </div>
         </div>
+    </section>
+    <section id="tCBody" class="hidden">
+        <div id="tapChart">
+            <img id="tdChart" src="./img/tapChart.png" alt="Tap & Die Sizing">
+        </div>
+    </section>
+    <section id="wSBody" class="hidden">
+
+    </section>
+    <section id="dSBody" class="hidden">
+
     </section>
     <footer><p id="copy">Copyright &copy; Clark Oake 2020</p></footer>
     <script src="main.js"></script>
