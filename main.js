@@ -101,11 +101,10 @@ function convChange () {
     document.getElementById('converterDropDown').classList.add('hidden');
 }
 
-function fracDisplay (fracValue) {
-    fracValue.shift();
-    fracAnswer = Array.join("/");
-    fracValue.innerHTML = fracAnswer;
-}
+// function fracDisplay (fracValue) {
+//     fracAnswer = fracValue.n + "/" + fracValue.d;
+//     console.log(fracAnswer);
+//     }
 
     //Hide dropdown menu if user clicks outside of it (THIS IS CURRENTLY BROKEN)
 // function hideDropDown () {
@@ -163,14 +162,10 @@ function convert(measurement) {
             answer = measurement / 0.0393701;
             answerUp = oneUp / 0.0393701;
             answerDown = oneDown / 0.0393701;
-            //
-            
-
-            fracInchUp = math.fraction(math.add(math.fraction(userString), math.fraction('1/16')));
-            fracDisplay(fracInchUp);
-
-
-            // fracInchDown.innerHTML = math.fraction(oneDown);
+            fracUpCalc = math.fraction(math.add(math.fraction(userString), math.fraction('1/16')));
+            fracInchUp.innerHTML = fracUpCalc.n + "/" + fracUpCalc.d;
+            fracDownCalc = math.fraction(math.subtract(math.fraction(userString), math.fraction('1/16')));
+            fracInchDown.innerHTML = fracDownCalc.n + "/" + fracDownCalc.d;
             answer = +answer.toFixed(2);
             answerUp = +answerUp.toFixed(2);
             answerDown = +answerDown.toFixed(2);
