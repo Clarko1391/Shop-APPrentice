@@ -159,7 +159,7 @@ function goBack () {
     backButton.classList.add('hidden');
     refPages.forEach(refPage => refPage.classList.add('hidden'));
     refPages[1].classList.remove('hidden');
-
+    toolName.innerHTML = 'Reference Manuals';
 }
 
     //Change header text of conversion based on which option is chosen
