@@ -273,7 +273,6 @@ input[type=number] {
     min-height: 200px;
     max-height: fit-content;
     min-width: 250px;
-    max-width: fit-content;
     background-color: var(--dark);
     color: var(--light);
     cursor: pointer;
@@ -307,9 +306,13 @@ input[type=number] {
     height: 30%;
 }
 
+.refDesc p {
+    padding: 10px;
+}
+
 .chart {
     height: 25vh;
-    width: 25vh;
+    width: 100%;
     background-color: var(--light);
     display: flex;
     flex-direction: column;
