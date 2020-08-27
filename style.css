@@ -264,18 +264,23 @@ input[type=number] {
     display: grid;
     grid: auto / auto auto;
     gap: 20px;
-    justify-content: space-around;
+    justify-items: center;
     align-items: center;
     /* overflow-y: scroll; */
 }
 
 .refCard {
     min-height: 200px;
-    max-height: fit-content;
+    height: 90%;
     min-width: 250px;
+    width: 90%;
     background-color: var(--dark);
     color: var(--light);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .refCard:hover {
     transform: scale(1.1);
@@ -311,7 +316,7 @@ input[type=number] {
 }
 
 .chart {
-    height: 25vh;
+    height: 100%;
     width: 100%;
     background-color: var(--light);
     display: flex;
@@ -347,7 +352,6 @@ input[type=number] {
     overflow-y: scroll;
     overflow-x: hidden;
     justify-content: flex-start;
-    position: relative;
     background-repeat: no-repeat;
 }
 
@@ -401,4 +405,20 @@ footer {
 
 .hidden {
     display: none;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 600px) {
+    .gridBox {
+        grid: auto / auto;
+        overflow-y: scroll;
+    }
+
+    .refPage {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    justify-content: flex-start;
+    background-repeat: no-repeat;
+    }
 }
