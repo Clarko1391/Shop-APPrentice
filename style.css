@@ -250,6 +250,75 @@ input[type=number] {
     font-size: .8em;
 }
 
+/* RefManuals elements */
+
+#rMBody {
+    overflow-y: scroll;
+}
+
+.gridBox {
+    height: 100%;
+    width: 90%;
+    display: grid;
+    grid: auto / auto auto;
+    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.refCard {
+    min-height: 200px;
+    max-height: fit-content;
+    min-width: 250px;
+    max-width: fit-content;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.refHeader {
+    width: 100%;
+    height: 20%;
+    background-color: var(--darkish);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: var(--light);
+}
+
+.refIcon {
+    color: var(--redAccent);
+}
+
+.refDesc {
+    width: 100%;
+    background-color: var(--darkish);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 30%;
+}
+
+.chart {
+    height: 25vh;
+    width: 25vh;
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.overflowChart{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    align-items: flex-start;
+    position: relative;
+    background-repeat: no-repeat;
+}
 
 /* Footer Elements */
 
@@ -266,42 +335,8 @@ footer {
     font-size: 1vh;
 }
 
+/* Hidden class for tool switch */
+
 .hidden {
     display: none;
-}
-
-/* tapChart page */
-
-.chart {
-    width: 100vw;
-    height: 80vh;
-    background-color: var(--light);
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
-
-.overflowChart{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    align-items: flex-start;
-    position: relative;
-    background-repeat: no-repeat;
-}
-
-#tdChart {
-    cursor: crosshair;
-    width: 80%;
-    max-height: 90%;
-}
-
-#wSChart {
-    cursor: crosshair;
-    width: 60%;
-    max-height: 95%;
-}
-
-#dSChart {
-    width: 80%;
-    cursor: crosshair;    
 }

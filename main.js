@@ -39,10 +39,7 @@ const tDD1 = document.getElementById('tDD1');
 tDD1.addEventListener('click', function (){toolChange()});
 const tDD2 = document.getElementById('tDD2');
 tDD2.addEventListener('click', function (){toolChange()});
-const tDD3 = document.getElementById('tDD3');
-tDD3.addEventListener('click', function (){toolChange()});
-const tDD4 = document.getElementById('tDD4');
-tDD4.addEventListener('click', function (){toolChange()});
+
 
     // conversionSelector and changers
 let conversion = document.getElementById('conversion');
@@ -56,10 +53,21 @@ cDD3.addEventListener('click', function() {convChange()});
 
     // Page selectors (section tags)
 const cSBody = document.getElementById('cSBody');
+const rMBody = document.getElementById('rMBody');
 const tCBody = document.getElementById('tCBody');
 const wSBody = document.getElementById('wSBody');
 const dSBody = document.getElementById('dSBody');
+const uABody = document.getElementById('uABody');
 
+    // Chart Selectors (clicking on card will bring up chart)
+const tCCard = document.getElementById('tCCard');
+tCCard.addEventListener('click', function(){tCChange()});
+const wSCard = document.getElementById('wSCard');
+wSCard.addEventListener('click', function(){wSChange()});
+const dSCard = document.getElementById('dSCard');
+dSCard.addEventListener('click', function(){dSChange()});
+const uACard = document.getElementById('uACard');
+uACard.addEventListener('click', function(){uAChange()});
 
 // Functions
 
@@ -109,28 +117,55 @@ function toolChange () {
     switch (toolName.innerHTML) {
         case "Measurement Converter":
             cSBody.classList.remove('hidden');
+            rMBody.classList.add('hidden');
             tCBody.classList.add('hidden');
-            wSBody.classList.add('hidden');
-            dSBody.classList.add('hidden');
             break;
-        case "Tap and Die Chart":
+        case "Reference Manuals":
             cSBody.classList.add('hidden');
-            tCBody.classList.remove('hidden');
-            wSBody.classList.add('hidden');
-            dSBody.classList.add('hidden');
-            break;
-        case "Wrench Size Chart":
-            cSBody.classList.add('hidden');
+            rMBody.classList.remove('hidden');
             tCBody.classList.add('hidden');
-            wSBody.classList.remove('hidden');
-            dSBody.classList.add('hidden');
             break;
-        case "Drill Bit Size Chart":
-            cSBody.classList.add('hidden');
-            tCBody.classList.add('hidden');
-            wSBody.classList.add('hidden');
-            dSBody.classList.remove('hidden');
     }
+}
+
+function tCChange () {
+    toolName.innerHTML = 'Tap and Die Chart';
+        cSBody.classList.add('hidden');
+        rMBody.classList.add('hidden');
+        tCBody.classList.remove('hidden');
+        wSBody.classList.add('hidden');
+        dSBody.classList.add('hidden');
+        uABody.classList.add('hidden');
+}
+
+function wSChange () {
+    toolName.innerHTML = 'Wrench Size Chart';
+        cSBody.classList.add('hidden');
+        rMBody.classList.add('hidden');
+        tCBody.classList.add('hidden');
+        wSBody.classList.remove('hidden');
+        dSBody.classList.add('hidden');
+        uABody.classList.add('hidden');
+}
+
+function dSChange () {
+    toolName.innerHTML = 'Drill Bit Size Chart';
+        cSBody.classList.add('hidden');
+        rMBody.classList.add('hidden');
+        tCBody.classList.add('hidden');
+        wSBody.classList.add('hidden');
+        dSBody.classList.remove('hidden');
+        uABody.classList.add('hidden');
+}
+
+function uAChange () {
+    toolName.innerHTML = 'User Added Reference Chart';
+        cSBody.classList.add('hidden');
+        rMBody.classList.add('hidden');
+        tCBody.classList.add('hidden');
+        wSBody.classList.add('hidden');
+        dSBody.classList.add('hidden');
+        uABody.classList.remove('hidden');
 }
 
     //Change header text of conversion based on which option is chosen

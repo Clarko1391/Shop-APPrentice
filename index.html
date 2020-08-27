@@ -18,9 +18,7 @@
             <div id="toolDropDown" class="hidden">
                 <ul>
                     <li id="tDD1" class="toolDDItem">Measurement Converter</li>
-                    <li id="tDD2" class="toolDDItem">Tap and Die Chart</li>
-                    <li id="tDD3" class="toolDDItem">Wrench Size Chart</li>
-                    <li id="tDD4" class="toolDDItem">Drill Bit Size Chart</li>
+                    <li id="tDD2" class="toolDDItem">Reference Manuals</li>
                 </ul>
             </div>
         </div>
@@ -71,19 +69,81 @@
             </div>
         </div>
     </section>
-    <section id="tCBody" class="hidden">
-        <div id="tapChart" class="chart">
+    <section id="rMBody" class="hidden">
+        <div class="gridBox">
+            <div id="tCCard" class="refCard">
+                <div class="chart">
+                    <div class="refHeader">
+                        <h2 >Tap and Die Chart</h2>
+                    </div>
+                    <div class="refIcon">
+                        <i class="fas fa-tools fa-5x"></i>
+                    </div>
+                    <div class="refDesc">
+                        <p>Standard tap and die sizes covering Metric and SAE up to 1/2"</p>
+                    </div>
+                </div>
+            </div>
+            <div id="wSCard" class="refCard">
+                <div class="chart">
+                    <div class="refHeader">
+                        <h2 >Wrench Size Chart</h2>
+                    </div>
+                    <div class="refIcon">
+                        <i class="fas fa-wrench fa-5x"></i>
+                    </div>
+                    <div class="refDesc">
+                        <p>Wrench size chart covering Metric and SAE based on nut/bolt size</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="dSCard" class="refCard">
+                <div class="chart">
+                    <div class="refHeader">
+                        <h2 >Drill Bit Size Chart</h2>
+                    </div>
+                    <div class="refIcon">
+                        <i class="fas fa-tools fa-5x"></i>
+                    </div>
+                    <div class="refDesc">
+                        <p>Drill bit size chart covering a wide range of sizes in Metric, SAE and numbered/lettered</p>
+                    </div>
+                </div>
+            </div>
+            <div id="uACard" class="refCard">
+                <div id="userChart" class="chart">
+                    <div class="refHeader">
+                        <h2 >Add Your Own!</h2>
+                    </div>
+                    <div class="refIcon">
+                        <i class="fas fa-tools fa-5x"></i>
+                    </div>
+                    <div class="refDesc">
+                        <p>It's free real estate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="tCBody" class="refPage hidden">
+        <div id="tapChart">
             <img id="tdChart" src="./img/tapChart.png" alt="Tap & Die Sizing">
         </div>
     </section>
-    <section id="wSBody" class="hidden">
-        <div id="wrenchChart" class="chart">
+    <section id="wSBody" class="refPage hidden">
+        <div id="wrenchChart">
             <img id="wSChart" src="./img/wrenchSizeChart.png" alt="Wrench Sizing">
         </div>
     </section>
-    <section id="dSBody" class="hidden">
-        <div id="drillChart" class="chart overflowChart">
+    <section id="dSBody" class="refPage hidden">
+        <div id="drillChart" class="overflowChart">
             <img id="dSChart" src="./img/drillSizeChart.png" alt="Drill Bit Sizing">
+        </div>
+    </section>
+    <section id="uABody" class="refPage hidden">
+        <div id="uAChart">
+            <img id="uAChart" src="./img/freeRealEstate.jpg" alt="freeRealEstate">
         </div>
     </section>
     <footer><p id="copy">Copyright &copy; Clark Oake 2020</p></footer>
