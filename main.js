@@ -59,15 +59,23 @@ const wSBody = document.getElementById('wSBody');
 const dSBody = document.getElementById('dSBody');
 const uABody = document.getElementById('uABody');
 
+    // Add all consts to array for easier scaleability
+const refPages = [cSBody, rMBody, tCBody, wSBody, dSBody, uABody];
+
+    // Back Button for refence manual
+const backButton = document.getElementById('backButton');
+const backBtn = document.getElementById('backBtn');
+backBtn.addEventListener('click', function(){goBack()});
+
     // Chart Selectors (clicking on card will bring up chart)
 const tCCard = document.getElementById('tCCard');
-tCCard.addEventListener('click', function(){tCChange()});
+tCCard.addEventListener('click', function(){refChange(2)});
 const wSCard = document.getElementById('wSCard');
-wSCard.addEventListener('click', function(){wSChange()});
+wSCard.addEventListener('click', function(){refChange(3)});
 const dSCard = document.getElementById('dSCard');
-dSCard.addEventListener('click', function(){dSChange()});
+dSCard.addEventListener('click', function(){refChange(4)});
 const uACard = document.getElementById('uACard');
-uACard.addEventListener('click', function(){uAChange()});
+uACard.addEventListener('click', function(){refChange(5)});
 
 // Functions
 
@@ -116,56 +124,42 @@ function toolChange () {
     document.getElementById('toolDropDown').classList.add('hidden');
     switch (toolName.innerHTML) {
         case "Measurement Converter":
-            cSBody.classList.remove('hidden');
-            rMBody.classList.add('hidden');
-            tCBody.classList.add('hidden');
+            refPages.forEach(refPage => refPage.classList.add('hidden'));
+            refPages[0].classList.remove('hidden');
+            backButton.classList.add('hidden');
             break;
         case "Reference Manuals":
             cSBody.classList.add('hidden');
             rMBody.classList.remove('hidden');
-            tCBody.classList.add('hidden');
             break;
     }
 }
 
-function tCChange () {
-    toolName.innerHTML = 'Tap and Die Chart';
-        cSBody.classList.add('hidden');
-        rMBody.classList.add('hidden');
-        tCBody.classList.remove('hidden');
-        wSBody.classList.add('hidden');
-        dSBody.classList.add('hidden');
-        uABody.classList.add('hidden');
+function refChange(a) {
+    // a will be the index positon of the page to be shown
+    refPages.forEach(refPage => refPage.classList.add('hidden'));
+    refPages[a].classList.remove('hidden');
+    backButton.classList.remove('hidden');
+    switch (a) {
+        case 2:
+            toolName.innerHTML = 'Tap and Die Chart';
+            break;
+        case 3:
+            toolName.innerHTML = 'Wrench Size Chart';
+            break;
+        case 4:
+            toolName.innerHTML = 'Drill Bit Size Chart';
+            break;
+        case 5:
+            toolName.innerHTML = 'User Added Reference Chart';
+    }
 }
 
-function wSChange () {
-    toolName.innerHTML = 'Wrench Size Chart';
-        cSBody.classList.add('hidden');
-        rMBody.classList.add('hidden');
-        tCBody.classList.add('hidden');
-        wSBody.classList.remove('hidden');
-        dSBody.classList.add('hidden');
-        uABody.classList.add('hidden');
-}
+function goBack () {
+    backButton.classList.add('hidden');
+    refPages.forEach(refPage => refPage.classList.add('hidden'));
+    refPages[1].classList.remove('hidden');
 
-function dSChange () {
-    toolName.innerHTML = 'Drill Bit Size Chart';
-        cSBody.classList.add('hidden');
-        rMBody.classList.add('hidden');
-        tCBody.classList.add('hidden');
-        wSBody.classList.add('hidden');
-        dSBody.classList.remove('hidden');
-        uABody.classList.add('hidden');
-}
-
-function uAChange () {
-    toolName.innerHTML = 'User Added Reference Chart';
-        cSBody.classList.add('hidden');
-        rMBody.classList.add('hidden');
-        tCBody.classList.add('hidden');
-        wSBody.classList.add('hidden');
-        dSBody.classList.add('hidden');
-        uABody.classList.remove('hidden');
 }
 
     //Change header text of conversion based on which option is chosen

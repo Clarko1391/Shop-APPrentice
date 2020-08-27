@@ -64,6 +64,7 @@ header h2{
     color: var(--dark);
 }
 
+    /* Tool menu and hidden dropdown */
 #toolSelector {
     width: 75%;
     min-width: 250px;
@@ -113,6 +114,7 @@ header h2{
 .fa-caret-square-down {
     color: var(--redAccent);
 }
+
 /* Section Elements */
 
 section {
@@ -131,6 +133,7 @@ section h3{
     padding: 0px 10px;
 }
 
+    /* Measurement Conversion Elements */
 #conversionSelector {
     width: 75%;
     min-width: 250px;
@@ -250,10 +253,9 @@ input[type=number] {
     font-size: .8em;
 }
 
-/* RefManuals elements */
-
-#rMBody {
-    overflow-y: scroll;
+    /* RefManuals elements */
+.refContainer {
+    height: 75vh;
 }
 
 .gridBox {
@@ -264,6 +266,7 @@ input[type=number] {
     gap: 20px;
     justify-content: space-around;
     align-items: center;
+    /* overflow-y: scroll; */
 }
 
 .refCard {
@@ -316,12 +319,64 @@ input[type=number] {
     color: var(--light);
 }
 
+.refPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#tDChart {
+    width: 75%;
+}
+
+#wSChart{
+    width: 50%;
+}
+
+#dSChart {
+    width: 90%;
+}
+
 .overflowChart{
     overflow-y: scroll;
     overflow-x: hidden;
-    align-items: flex-start;
+    justify-content: flex-start;
     position: relative;
     background-repeat: no-repeat;
+}
+
+    /* Back Button for reference manual */
+#backButton {
+    height: 5vh;
+    width: 100%;
+    padding: 0;
+}
+
+#back {
+    background-color: var(--dark);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#backBtn {
+    border: none;
+    background-color: var(--redAccent);
+    color: var(--light);
+    width: 50%;
+    height: 60%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#backBtn:hover {
+    transform: scale(1.1);
 }
 
 /* Footer Elements */
@@ -339,7 +394,7 @@ footer {
     font-size: 1vh;
 }
 
-/* Hidden class for tool switch */
+/* Hidden class for navigation */
 
 .hidden {
     display: none;
