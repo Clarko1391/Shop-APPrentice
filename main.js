@@ -23,8 +23,8 @@ let fracInchUp = document.getElementById('fracInchUp');
 let fracInchDown = document.getElementById('fracInchDown');
 
     //dropdown menu divs
-document.getElementById('toolDD').addEventListener('click', function() {toolMenu()});
-document.getElementById('conversionDD').addEventListener('click', function() {converterMenu()});
+document.getElementById('toolSelector').addEventListener('click', function() {toolMenu()});
+document.getElementById('conversionSelector').addEventListener('click', function() {converterMenu()});
 
     // Event listener to close dropdown menu if user clicks outside
 window.addEventListener('click', function(){hideDropDown()});
