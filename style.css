@@ -134,6 +134,26 @@ section h3{
 }
 
     /* Measurement Conversion Elements */
+.instructionCard {
+    width: 75%;
+    border-radius: 10px;
+}
+
+.instructionCard h3 {
+    background-color: var(--darkish);
+    color: var(--light);
+    border-radius: 10px;
+}
+
+.instructionCard p {
+    background: var(--darkish);
+    color: var(--light);
+    font-size: 1.75vh;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 10px;
+}
+
 #conversionSelector {
     width: 75%;
     min-width: 250px;
@@ -336,16 +356,30 @@ input[type=number] {
     align-items: center;
 }
 
-#tDChart {
+.refTable{
+    background-color: var(--darkish);
+    color: var(--light);
+    text-align: center;
     width: 75%;
+    border: 1px solid var(--dark);
+    border-collapse: collapse;
 }
 
-#wSChart{
-    width: 50%;
+th {
+    border: 1px solid var(--dark);
+    background-color: var(--redAccent);
+    color: var(--dark);
+
 }
 
-#dSChart {
-    width: 90%;
+td {
+    border: 1px solid var(--dark);
+    color: var(--dark);
+    padding: 5px;
+}
+
+#tCTable {
+    width: 80%;
 }
 
 .overflowChart{
