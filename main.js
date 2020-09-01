@@ -129,8 +129,9 @@ function toolChange () {
             backButton.classList.add('hidden');
             break;
         case "Reference Manuals":
-            cSBody.classList.add('hidden');
-            rMBody.classList.remove('hidden');
+            refPages.forEach(refPage => refPage.classList.add('hidden'));
+            refPages[1].classList.remove('hidden');
+            backButton.classList.add('hidden');
             break;
     }
 }
