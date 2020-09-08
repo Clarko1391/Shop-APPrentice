@@ -13,7 +13,7 @@
         <div id="toolSelector">
             <h2 id="toolName">Measurement Converter</h2>
             <button id="toolDD">
-                <i class="fas fa-caret-square-down fa-2x"></i>
+                <i class="fas fa-caret-down fa-3x arrow"></i>
             </button>
             <div id="toolDropDown" class="hidden">
                 <ul>
@@ -24,56 +24,62 @@
         </div>
     </header>
     <section id = cSBody>
-        <div class="instructionCard">
-            <h3>Select the units to be converted:</h3>
-        </div>
-        <div id="conversionSelector">
-            <h3 id="conversion">mm to inches</h3>
-            <button id="conversionDD">
-                <i class="fas fa-caret-square-down fa-2x"></i>
-            </button>
-            <div id="converterDropDown" class="hidden">
-                <ul>
-                    <li id="cDD1" class="conDDItem">mm to inches</li>
-                    <li id="cDD2" class="conDDItem">inches to mm - Decimal</li>
-                    <li id="cDD3" class="conDDItem">inches to mm - Fractional</li>
-                </ul>
+        <div class="inputContainer">
+            <!-- <div class="instructionCard">
+                <h3>Select the units to be converted:</h3>
+            </div> -->
+            <div id="conversionSelector">
+                <h3 id="conversion">mm to inches</h3>
+                <button id="conversionDD">
+                    <i class="fas fa-caret-down fa-3x arrow"></i>
+                </button>
+                <div id="converterDropDown" class="hidden">
+                    <ul>
+                        <li id="cDD1" class="conDDItem">mm to inches</li>
+                        <li id="cDD2" class="conDDItem">inches to mm - Decimal</li>
+                        <li id="cDD3" class="conDDItem">inches to mm - Fractional</li>
+                    </ul>
+                </div>
+            </div>
+            <form>
+                <div id="entry">
+                    <input type="text" id="userEntry" placeholder="Enter your measurement here"></input>
+                    <div id="refreshContainer">
+                        <i id="refresh" class="fas fa-times fa-2x"></i>
+                    </div>
+                </div>
+            </form>
+            <div class="instructionCard">
+                <p>To enter a fractional value, use "inches to mm - Fractional"</p>
+                <p>Otherwise, enter only whole number or decimal values</p>
+                <p>Step measurements are based on 1/16th of an inch</p>
             </div>
         </div>
-        <div class="instructionCard">
-            <p>To enter a fractional value, use "inches to mm - Fractional"</p>
-            <p>Otherwise, enter only whole number or decimal values</p>
-            <p>Step measurements are based on 1/16th of an inch</p>
-        </div>
-        <form>
-            <div id="entry">
-                <input type="text" id="userEntry" placeholder="Enter your measurement here"></input>
-                <i id="refresh" class="fas fa-times fa-lg"></i>
+        <div class="outputContainer">
+            <div class="container">
+                <div class='returnHeader'><h4>Decimal <span class="accent">(mm)</span></h4></div>
+                <div class="returnMeasurements">
+                    <p class="oneDown" id="decMMDown">- 1</p>
+                    <p class="measurement" id="decMM">Conversion</p>
+                    <p class="oneUp" id="decMMUp">+1</p>
+                </div>
             </div>
-        </form>
-        <div class="container">
-            <div class='returnHeader'><h4>Decimal <span class="accent">(mm)</span></h4></div>
-            <div class="returnMeasurements">
-                <p class="oneDown" id="decMMDown">One down</p>
-                <p class="measurement" id="decMM">Conversion</p>
-                <p class="oneUp" id="decMMUp">One up</p>
+            <div class="container">
+                <div class='returnHeader'><h4>Decimal <span class="accent">(inch)</span></h4></div>
+                <div class="returnMeasurements">
+                    <p class="oneDown" id="decInchDown">-1</p>
+                    <p class="measurement" id="decInch">Conversion</p>
+                    <p class="oneUp" id="decInchUp">+1</p>
+                    
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class='returnHeader'><h4>Decimal <span class="accent">(inch)</span></h4></div>
-            <div class="returnMeasurements">
-                <p class="oneDown" id="decInchDown">One down</p>
-                <p class="measurement" id="decInch">Conversion</p>
-                <p class="oneUp" id="decInchUp">One up</p>
-                
-            </div>
-        </div>
-        <div class="container">
-            <div class='returnHeader'><h4>Fractional <span class="accent">(inch)</span></h4></div>
-            <div class="returnMeasurements">
-                <p class="oneDown" id="fracInchDown">One down</p>
-                <p class="measurement" id="fracInch">Conversion</p>
-                <p class="oneUp" id="fracInchUp">One up</p>
+            <div class="container">
+                <div class='returnHeader'><h4>Fractional <span class="accent">(inch)</span></h4></div>
+                <div class="returnMeasurements">
+                    <p class="oneDown" id="fracInchDown">-1</p>
+                    <p class="measurement" id="fracInch">Conversion</p>
+                    <p class="oneUp" id="fracInchUp">+1</p>
+                </div>
             </div>
         </div>
     </section>
@@ -84,9 +90,9 @@
                     <div class="refHeader">
                         <h2 >Tap and Die Chart</h2>
                     </div>
-                    <div class="refIcon">
+                    <!-- <div class="refIcon">
                         <i class="fas fa-tools fa-5x"></i>
-                    </div>
+                    </div> -->
                     <div class="refDesc">
                         <p>Standard tap and die sizes covering Metric and SAE up to 1/2"</p>
                     </div>
@@ -97,9 +103,9 @@
                     <div class="refHeader">
                         <h2 >Wrench Size Chart</h2>
                     </div>
-                    <div class="refIcon">
+                    <!-- <div class="refIcon">
                         <i class="fas fa-wrench fa-5x"></i>
-                    </div>
+                    </div> -->
                     <div class="refDesc">
                         <p>Wrench size chart covering Metric and SAE based on nut/bolt size</p>
                     </div>
@@ -111,9 +117,9 @@
                     <div class="refHeader">
                         <h2 >Drill Bit Size Chart</h2>
                     </div>
-                    <div class="refIcon">
+                    <!-- <div class="refIcon">
                         <i class="fas fa-tools fa-5x"></i>
-                    </div>
+                    </div> -->
                     <div class="refDesc">
                         <p>Extensive drill bit size chart covering a wide range of sizes in Metric and SAE</p>
                     </div>
@@ -124,9 +130,9 @@
                     <div class="refHeader">
                         <h2 >Add Your Own!</h2>
                     </div>
-                    <div class="refIcon">
+                    <!-- <div class="refIcon">
                         <i class="fas fa-tools fa-5x"></i>
-                    </div>
+                    </div> -->
                     <div class="refDesc">
                         <p>This option will be added in a future update</p>
                     </div>
