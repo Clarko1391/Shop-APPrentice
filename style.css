@@ -120,12 +120,13 @@ header h2{
 
 .toolDDItem {
     font-size: 2vh;
+    padding: 5px 0px;
 }
 
 /* Section Elements */
 
 #cSBody {
-    background: url(./img/cSBackground.jpg);
+    background: url(./img/left.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -324,12 +325,12 @@ input[type=number] {
     justify-content: space-around;
     align-items: center;
     font-weight: bolder;
-    color: var(--redAccent);
+    color: var(--light);
     
 }
 
 .measurement {
-    color: var(--redAccent);
+    color: var(--light);
     font-size: 1.75vh;
 }
 
@@ -341,6 +342,32 @@ input[type=number] {
     /* RefManuals elements */
 .refContainer {
     height: 81.5vh;
+    
+}
+
+#rMBody {
+    background: url(./img/right.png);
+    background-size: cover;
+}
+
+#tCBody {
+    background: url(./img/right.png);
+    background-size: cover;
+}
+
+#wSBody {
+    background: url(./img/right.png);
+    background-size: cover;
+}
+
+#dSBody {
+    background: url(./img/right.png);
+    background-size: cover;
+}
+
+#uABody {
+    background: url(./img/right.png);
+    background-size: cover;
 }
 
 .gridBox {
