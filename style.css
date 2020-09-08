@@ -299,7 +299,7 @@ input[type=number] {
     background: var(--dark);
     color: var(--light);
     opacity: .8;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .returnHeader {
