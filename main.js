@@ -1,7 +1,8 @@
 // Selectors & Event Listeners
 
     //user entry and math variables
-document.getElementById('userEntry').addEventListener('input', userInput);
+const userEntry = document.getElementById('userEntry');
+userEntry.addEventListener('input', userInput);
 let measurement = '';
 let fracValue = '';
 let fracAnswer = '';
@@ -23,7 +24,8 @@ let fracInchUp = document.getElementById('fracInchUp');
 let fracInchDown = document.getElementById('fracInchDown');
 
     //dropdown menu divs
-document.getElementById('toolSelector').addEventListener('click', function() {toolMenu()});
+const ToolSelector = document.getElementById('toolSelector');
+toolSelector.addEventListener('click', function() {toolMenu()});
 document.getElementById('conversionSelector').addEventListener('click', function() {converterMenu()});
 
     // Event listener to close dropdown menu if user clicks outside
@@ -82,10 +84,12 @@ uACard.addEventListener('click', function(){refChange(5)});
     // constantly grab user input for math functions
 function userInput (){
     if (conversionSelector === "mm to inches" || conversionSelector === 'inches to mm - Decimal') {
-        userString = userEntry.value;
-        measurement = parseInt(userString);
+        userEntry.setAttribute('type', 'number');
+        measurement = userEntry.value;
         convert(measurement);
+
     } else if (conversionSelector === "inches to mm - Fractional") {
+        userEntry.setAttribute('type', 'text');
         userString = userEntry.value;
         measurement = math.fraction(userString);
         measurement = math.number(measurement);
@@ -98,14 +102,14 @@ function userInput (){
 function refresh() {
     document.getElementById('userEntry').value = '';
     decInch.innerHTML = "Conversion";
-    decInchUp.innerHTML = "One up";
-    decInchDown.innerHTML = "One down";
+    decInchUp.innerHTML = "+1";
+    decInchDown.innerHTML = "-1";
     decMM.innerHTML = "Conversion";
-    decMMUp.innerHTML = "One up";
-    decMMDown.innerHTML = "One down";
+    decMMUp.innerHTML = "+1";
+    decMMDown.innerHTML = "-1";
     fracInch.innerHTML = "Conversion";
-    fracInchUp.innerHTML = "One up";
-    fracInchDown.innerHTML = "One down";
+    fracInchUp.innerHTML = "+1";
+    fracInchDown.innerHTML = "-1";
 }
 
     // Show/hide Tool Selection Menu by toggling 'hidden' class
@@ -127,11 +131,13 @@ function toolChange () {
             refPages.forEach(refPage => refPage.classList.add('hidden'));
             refPages[0].classList.remove('hidden');
             backButton.classList.add('hidden');
+            toolSelector.style['border-radius'] = "5px 5px 0px 0px";
             break;
         case "Reference Manuals":
             refPages.forEach(refPage => refPage.classList.add('hidden'));
             refPages[1].classList.remove('hidden');
             backButton.classList.add('hidden');
+            toolSelector.style['border-radius'] = "5px 5px 5px 5px";
             break;
     }
 }
@@ -167,7 +173,22 @@ function goBack () {
 function convChange () {
     conversionSelector = event.target.innerHTML;
     conversion.innerHTML = conversionSelector;
+    pHChange();
     document.getElementById('converterDropDown').classList.add('hidden');
+}
+
+function pHChange() {
+    switch (conversionSelector) {
+        case 'mm to inches':
+            userEntry.setAttribute('placeholder', 'Enter decimal mm value');
+            break;
+        case 'inches to mm - Decimal':
+            userEntry.setAttribute('placeholder', 'Enter decimal inch value');
+            break;
+        case 'inches to mm - Fractional':
+            userEntry.setAttribute('placeholder', 'Enter fractional inch value');
+            break;
+    }
 }
 
     //Hide dropdown menu if user clicks outside of it
