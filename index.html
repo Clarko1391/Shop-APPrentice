@@ -93,13 +93,28 @@
             </div> -->
             <div id="calcEntries">
                 <div class="calcContainer">
-                    <input id="calcIn1" type="number" step="0.01" placeholder="Enter first value" autocomplete="off"></input>
+                    <input id="calcIn1" class="calcInput" type="number" step="0.01" placeholder="Enter first value" autocomplete="off"></input>
                     <div id="calcIn1Reset" class="calcInReset">
                         <i id="reset1" class="fas fa-times fa-2x"></i>
                     </div>
                 </div>
+                <div id="operationSelector">
+                    <div id="opValue">
+                        <p>+</p>
+                    </div>
+                    <div id="opSelect">
+                        <i class="fas fa-caret-down fa-3x arrow"></i>
+                    </div>
+                    <div id="opDropDown" class="hidden">
+                        <ul>
+                            <li id="opDD1" class="conDDItem">-</li>
+                            <li id="opDD2" class="conDDItem">*</li>
+                            <li id="opDD3" class="conDDItem">%</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="calcContainer">
-                    <input id="calcIn2" type="number" step="0.01" placeholder="Enter second value" autocomplete="off"></input>
+                    <input id="calcIn2" class="calcInput" type="number" step="0.01" placeholder="Enter second value" autocomplete="off"></input>
                     <div id="calcIn2Reset" class="calcInReset">
                         <i id="reset2" class="fas fa-times fa-2x"></i>
                     </div>
@@ -107,8 +122,8 @@
             </div>
         </div>
         <div class="outputContainer">
-            <div class="container">
-                <div class='returnHeader'><h4>Decimal <span class="accent">(mm)</span></h4></div>
+            <div class="calcOutput">
+                <div class='returnHeader'><h4><span class="accent">(mm)</span></h4></div>
                 <div class="returnMeasurements">
                     <p class="oneDown" id="decMMDown">- 1</p>
                     <p class="measurement" id="decMM">Conversion</p>
