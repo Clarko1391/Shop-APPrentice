@@ -18,16 +18,14 @@
             <div id="toolDropDown" class="hidden">
                 <ul>
                     <li id="tDD1" class="toolDDItem">Measurement Converter</li>
-                    <li id="tDD2" class="toolDDItem">Reference Manuals</li>
+                    <li id="tDD2" class="toolDDItem">Fractional Calculator</li>
+                    <li id="tDD3" class="toolDDItem">Reference Manuals</li>
                 </ul>
             </div>
         </div>
     </header>
     <section id = cSBody>
         <div class="inputContainer">
-            <!-- <div class="instructionCard">
-                <h3>Select the units to be converted:</h3>
-            </div> -->
             <div id="conversionSelector">
                 <h3 id="conversion">mm to inches</h3>
                 <button id="conversionDD">
@@ -49,11 +47,11 @@
                     </div>
                 </div>
             </form>
-            <div class="instructionCard">
+            <!-- <div class="instructionCard">
                 <p>To enter a fractional value, use "inches to mm - Fractional"</p>
                 <p>Otherwise, enter only whole number or decimal values</p>
                 <p>Step measurements are based on 1/16th of an inch</p>
-            </div>
+            </div> -->
         </div>
         <div class="outputContainer">
             <div class="container">
@@ -83,38 +81,31 @@
             </div>
         </div>
     </section>
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <section id = fCBody>
+    <section id = fCBody class="hidden">
         <div class="inputContainer">
-            <!-- <div class="instructionCard">
-                <h3>Select the units to be converted:</h3>
-            </div> -->
             <div id="calcEntries">
                 <div class="calcContainer">
-                    <input id="calcIn1" class="calcInput" type="number" step="0.01" placeholder="Enter first value" autocomplete="off"></input>
+                    <input id="calcIn1" class="calcInput" type="text" step="0.01" placeholder="Enter first value" autocomplete="off"></input>
                     <div id="calcIn1Reset" class="calcInReset">
                         <i id="reset1" class="fas fa-times fa-2x"></i>
                     </div>
                 </div>
                 <div id="operationSelector">
-                    <div id="opValue">
-                        <p>+</p>
-                    </div>
+                    <h3 id="opValue">+</h3>
                     <div id="opSelect">
                         <i class="fas fa-caret-down fa-3x arrow"></i>
                     </div>
                     <div id="opDropDown" class="hidden">
                         <ul>
-                            <li id="opDD1" class="conDDItem">-</li>
-                            <li id="opDD2" class="conDDItem">*</li>
-                            <li id="opDD3" class="conDDItem">%</li>
+                            <li id="opDD1" class="conDDItem">+</li>
+                            <li id="opDD2" class="conDDItem">-</li>
+                            <li id="opDD3" class="conDDItem">X</li>
+                            <li id="opDD4" class="conDDItem">%</li>
                         </ul>
                     </div>
                 </div>
                 <div class="calcContainer">
-                    <input id="calcIn2" class="calcInput" type="number" step="0.01" placeholder="Enter second value" autocomplete="off"></input>
+                    <input id="calcIn2" class="calcInput" type="text" step="0.01" placeholder="Enter second value" autocomplete="off"></input>
                     <div id="calcIn2Reset" class="calcInReset">
                         <i id="reset2" class="fas fa-times fa-2x"></i>
                     </div>
@@ -122,19 +113,15 @@
             </div>
         </div>
         <div class="outputContainer">
-            <div class="calcOutput">
-                <div class='returnHeader'><h4><span class="accent">(mm)</span></h4></div>
+            <div id="calcOutput">
+                <div id='calcHeader'><h4>Result</h4></div>
                 <div class="returnMeasurements">
-                    <p class="oneDown" id="decMMDown">- 1</p>
-                    <p class="measurement" id="decMM">Conversion</p>
-                    <p class="oneUp" id="decMMUp">+1</p>
+                    <div id="calcDec">Decimal Result</div>
+                    <div id="calcFrac">Fractional Result</div>
                 </div>
             </div>
         </div>
     </section>
-    <!--  -->
-    <!--  -->
-    <!--  -->
     <section id="rMBody" class="hidden">
         <div class="gridBox">
             <div id="tCCard" class="refCard">
