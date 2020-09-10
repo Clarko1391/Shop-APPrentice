@@ -350,6 +350,12 @@ input:focus {
     font-size: 1.5vh;
 }
 
+    /* Fractional Calculator Elements */
+
+#fCBody {
+    display: none;
+}
+
     /* RefManuals elements */
 .refContainer {
     height: 81.5vh;

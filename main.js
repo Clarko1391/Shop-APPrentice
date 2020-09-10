@@ -86,6 +86,7 @@ function userInput (){
     if (conversionSelector === "mm to inches" || conversionSelector === 'inches to mm - Decimal') {
         userEntry.setAttribute('type', 'number');
         measurement = userEntry.value;
+        measurement = parseInt(measurement);
         convert(measurement);
 
     } else if (conversionSelector === "inches to mm - Fractional") {
@@ -216,7 +217,12 @@ function fracConvert(decimalNum, fracWrite) {
     decValue = decimalNum - Math.floor(decimalNum);
     wholeNum = Math.floor(decimalNum);
     fracNum = Math.round(decValue * 16);
-    fracWrite.innerHTML = wholeNum + ' ' + fracNum + '/16';
+    if (wholeNum > 0) {
+        fracWrite.innerHTML = wholeNum + ' ' + fracNum + '/16';
+    } else {
+        fracWrite.innerHTML = fracNum + '/16';
+    }
+    
 }
 
     //Convert improper fractions in inches to mm - Fractional to mixed numbers
@@ -254,11 +260,11 @@ function convert(measurement) {
             decInchDown.innerHTML = answerDown;
             break;
         case "inches to mm - Decimal":
-            oneUp = (measurement + 0.0625);
-            oneDown = (measurement -  0.0625);
-            answer = measurement / 0.0393701;
-            answerUp = oneUp / 0.0393701;
-            answerDown = oneDown / 0.0393701;
+            oneUp = (measurement + .0625);
+            oneDown = (measurement -  .0625);
+            answer = measurement / .0393701;
+            answerUp = oneUp / .0393701;
+            answerDown = oneDown / .0393701;
             fracConvert(measurement, fracInch);
             fracConvert(oneUp, fracInchUp);
             fracConvert(oneDown, fracInchDown);
