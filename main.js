@@ -3,21 +3,28 @@
     //user entry and math variables (for both converter and calculator)
 const userEntry = document.getElementById('userEntry');
 userEntry.addEventListener('input', userInput);
-let measurement = '';
-let fracValue = '';
-let fracAnswer = '';
-let decimalNum = '';
-let decValue = '';
-let wholeNum = '';
-let fracNum = '';
-let fracWrite = '';
+let measurement,
+    fracValue,
+    fracAnswer,
+    decimalNum,
+    decValue,
+    wholeNum,
+    fracNum,
+    fracWrite = '';
 ////////////////////////////////////////////////////////////////////////
 const calcIn1 = document.getElementById('calcIn1');
 calcIn1.addEventListener('input', function(){calcInput1()});
 const calcIn2 = document.getElementById('calcIn2');
 calcIn2.addEventListener('input', function(){calcInput2()});
-let calcValue1 = '';
-let calcVlaue2 = '';
+let calcValue1,
+    calcVlaue2,
+    calcDecimal, 
+    calcWhole, 
+    calcFraction, 
+    calcFractionWhole, 
+    calcFractionNumerator, 
+    calcFracWrite,
+    calcFractionWrite = '';
 
     // output values
 const decInch = document.getElementById('decInch');
@@ -331,16 +338,13 @@ function calcInput1 (){
         calcValue1 = calcIn1.value;
         calcValue1 = math.fraction(calcValue1);
         calcValue1 = math.number(calcValue1);
-        console.log(calcValue1);  
         calcReady();   
     } else if (calcVerify1.includes('.')) {
         calcValue1 = calcIn1.value;
         calcValue1 = math.number(calcValue1);
-        console.log(calcValue1);
         calcReady(); 
     } else {
         calcValue1 = calcIn1.value;
-        console.log(calcValue1);
         calcReady(); 
     }
 }
@@ -351,16 +355,13 @@ function calcInput2 (){
         calcValue2 = calcIn2.value;
         calcValue2 = math.fraction(calcValue2);
         calcValue2 = math.number(calcValue2);
-        console.log(calcValue2);
         calcReady(); 
     } else if (calcVerify2.includes('.')) {
         calcValue2 = calcIn2.value;
         calcValue2 = math.number(calcValue2);
-        console.log(calcValue2);
         calcReady(); 
     } else {
         calcValue2 = calcIn2.value;
-        console.log(calcValue2);
         calcReady(); 
     }
 }
@@ -411,25 +412,48 @@ function calculate() {
             break;
     }
 }
-
+    // Convert calcResult to a fraction (x/16)
 function calcFracConvert(calcResult) {
-    let calcDecimal, calcWhole, calcFraction, calcFractionWhole, calcFractionNumerator = '';
-        calcDecimal = calcResult - Math.floor(calcResult);
-        calcWhole = Math.floor(calcResult);
-        calcFraction = Math.round(calcDecimal * 16);
+    calcDecimal = calcResult - Math.floor(calcResult);
+    calcWhole = Math.floor(calcResult);
+    calcFraction = Math.round(calcDecimal * 16);
 
-        if (calcFraction > 16) {
-            calcFractionWhole = calcFraction / 16;
-            calcFractionNumerator = calcFraction % 16;
-        } else calcFractionNumerator = calcFraction;
+    if (calcFraction > 16) {
+        calcFractionWhole = calcFraction / 16;
+        calcFractionNumerator = calcFraction % 16;
+    } else calcFractionNumerator = calcFraction;
 
-        if (calcWhole > 0) {
-            calcFrac.innerHTML = calcWhole + ' ' + calcFractionNumerator + '/16';
-        } else {
-            calcFrac.innerHTML = calcFractionNumerator + '/16';
-        }
+    calcCheckLCD();
+    
+    if (calcWhole > 0) {
+        calcFracWrite = calcWhole + ' ' + calcFractionWrite;
+    } else {
+        calcFracWrite = calcFractionWrite;
     }
+    console.log(calcFracWrite)
+    calcWrite ();
+}
 
+    // return lowest common denominator of calc result
+function calcCheckLCD() {
+    if (calcFractionNumerator == 16) {
+        calcFractionWrite = '';
+    } else if (calcFractionNumerator > 0 && calcFractionNumerator % 8 == 0) {
+        calcFractionWrite = '1/2';
+    } else if (calcFractionNumerator > 0 && calcFractionNumerator % 4 == 0) {
+        calcFractionNumerator = calcFractionNumerator / 4;
+        calcFractionWrite = calcFractionNumerator.toString() + '/4';
+    } else if (calcFractionNumerator > 0 && calcFractionNumerator % 2 == 0) {
+        calcFractionNumerator = calcFractionNumerator / 2;
+        calcFractionWrite = calcFractionNumerator.toString() + '/2';
+    } else if (calcFractionNumerator > 0) {
+        calcFractionWrite = calcFractionNumerator.toString() + '/16';
+    } else calcFractionWrite = '';
+}
+
+function calcWrite() {
+    calcFrac.innerHTML = calcFracWrite;
+}
 
 // Reference Manual Elements
 
