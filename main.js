@@ -229,84 +229,107 @@ function pHChange() {
 }
     //Conversion between mm to inches and vice versa in both decimal and fractional
 function convert(measurement) {
-        switch (conversionSelector) {
-            case "mm to inches":
-                decMM.innerHTML = measurement;
-                oneUp = (measurement + 1);
-                decMMUp.innerHTML = oneUp;
-                oneDown = (measurement - 1);
-                decMMDown.innerHTML = oneDown;
-                answer = measurement * 0.0393701;
-                answerUp = oneUp * 0.0393701;
-                answerDown = oneDown * 0.0393701;
-                fracConvert(answer, fracInch);
-                fracConvert(answerUp, fracInchUp);
-                fracConvert(answerDown, fracInchDown);
-                answer = +answer.toFixed(2);
-                answerUp = +answerUp.toFixed(2);
-                answerDown = +answerDown.toFixed(2);
-                decInch.innerHTML = answer;
-                decInchUp.innerHTML = answerUp;
-                decInchDown.innerHTML = answerDown;
-                break;
-            case "inches to mm - Decimal":
-                oneUp = (measurement + .0625);
-                oneDown = (measurement -  .0625);
-                answer = measurement / .0393701;
-                answerUp = oneUp / .0393701;
-                answerDown = oneDown / .0393701;
-                fracConvert(measurement, fracInch);
-                fracConvert(oneUp, fracInchUp);
-                fracConvert(oneDown, fracInchDown);
-                answer = +answer.toFixed(2);
-                answerUp = +answerUp.toFixed(2);
-                answerDown = +answerDown.toFixed(2);
-                oneUp = +oneUp.toFixed(2);
-                oneDown = +oneDown.toFixed(2);
-                decMM.innerHTML = answer;
-                decMMUp.innerHTML = answerUp;
-                decMMDown.innerHTML = answerDown;
-                decInchUp.innerHTML = oneUp;
-                decInch.innerHTML = measurement;
-                decInchDown.innerHTML = oneDown;
-                break;
-            case "inches to mm - Fractional":   
-                oneUp = (measurement + 0.0625);
-                oneDown = (measurement -  0.0625);           
-                answer = measurement / 0.0393701;
-                answerUp = oneUp / 0.0393701;
-                answerDown = oneDown / 0.0393701;
-                fracUpCalc = math.fraction(math.add(math.fraction(userString), math.fraction('1/16')));
-                fracMix(fracUpCalc, fracInchUp);
-                fracDownCalc = math.fraction(math.subtract(math.fraction(userString), math.fraction('1/16')));
-                fracMix(fracDownCalc, fracInchDown);
-                answer = +answer.toFixed(2);
-                answerUp = +answerUp.toFixed(2);
-                answerDown = +answerDown.toFixed(2);
-                oneUp = +oneUp.toFixed(2);
-                oneDown = +oneDown.toFixed(2);
-                decMM.innerHTML = answer;
-                decMMUp.innerHTML = answerUp;
-                decMMDown.innerHTML = answerDown;
-                decInch.innerHTML = measurement;
-                decInchUp.innerHTML = oneUp;
-                decInchDown.innerHTML = oneDown;
-                fracInch.innerHTML = userString;
-        }
+    switch (conversionSelector) {
+        case "mm to inches":
+            decMM.innerHTML = measurement;
+            oneUp = (measurement + 1);
+            decMMUp.innerHTML = oneUp;
+            oneDown = (measurement - 1);
+            decMMDown.innerHTML = oneDown;
+            answer = measurement * 0.0393701;
+            answerUp = oneUp * 0.0393701;
+            answerDown = oneDown * 0.0393701;
+            fracConvert(answer, fracInch);
+            fracConvert(answerUp, fracInchUp);
+            fracConvert(answerDown, fracInchDown);
+            answer = +answer.toFixed(2);
+            answerUp = +answerUp.toFixed(2);
+            answerDown = +answerDown.toFixed(2);
+            decInch.innerHTML = answer;
+            decInchUp.innerHTML = answerUp;
+            decInchDown.innerHTML = answerDown;
+            break;
+        case "inches to mm - Decimal":
+            oneUp = (measurement + .0625);
+            oneDown = (measurement -  .0625);
+            answer = measurement / .0393701;
+            answerUp = oneUp / .0393701;
+            answerDown = oneDown / .0393701;
+            fracConvert(measurement, fracInch);
+            fracConvert(oneUp, fracInchUp);
+            fracConvert(oneDown, fracInchDown);
+            answer = +answer.toFixed(2);
+            answerUp = +answerUp.toFixed(2);
+            answerDown = +answerDown.toFixed(2);
+            oneUp = +oneUp.toFixed(2);
+            oneDown = +oneDown.toFixed(2);
+            decMM.innerHTML = answer;
+            decMMUp.innerHTML = answerUp;
+            decMMDown.innerHTML = answerDown;
+            decInchUp.innerHTML = oneUp;
+            decInch.innerHTML = measurement;
+            decInchDown.innerHTML = oneDown;
+            break;
+        case "inches to mm - Fractional":   
+            oneUp = (measurement + 0.0625);
+            oneDown = (measurement -  0.0625);           
+            answer = measurement / 0.0393701;
+            answerUp = oneUp / 0.0393701;
+            answerDown = oneDown / 0.0393701;
+            fracUpCalc = math.fraction(math.add(math.fraction(userString), math.fraction('1/16')));
+            fracMix(fracUpCalc, fracInchUp);
+            fracDownCalc = math.fraction(math.subtract(math.fraction(userString), math.fraction('1/16')));
+            fracMix(fracDownCalc, fracInchDown);
+            answer = +answer.toFixed(2);
+            answerUp = +answerUp.toFixed(2);
+            answerDown = +answerDown.toFixed(2);
+            oneUp = +oneUp.toFixed(2);
+            oneDown = +oneDown.toFixed(2);
+            decMM.innerHTML = answer;
+            decMMUp.innerHTML = answerUp;
+            decMMDown.innerHTML = answerDown;
+            decInch.innerHTML = measurement;
+            decInchUp.innerHTML = oneUp;
+            decInchDown.innerHTML = oneDown;
+            fracInch.innerHTML = userString;
+    }
     
 }
+
     //Display decimal remainders as fractions in 16ths of an inch
 function fracConvert(decimalNum, fracWrite) {
-        decValue = decimalNum - Math.floor(decimalNum);
-        wholeNum = Math.floor(decimalNum);
-        fracNum = Math.round(decValue * 16);
-        if (wholeNum > 0) {
-            fracWrite.innerHTML = wholeNum + ' ' + fracNum + '/16';
-        } else {
-            fracWrite.innerHTML = fracNum + '/16';
-        }
+    decValue = decimalNum - Math.floor(decimalNum);
+    wholeNum = Math.floor(decimalNum);
+    fracNum = Math.round(decValue * 16);
+    convCheckLCD(fracNum);
+    if (wholeNum > 0) {
+        fracWrite.innerHTML = wholeNum + ' ' + fracNum;
+    } else {
+        fracWrite.innerHTML = fracNum;
+    }
         
 }
+
+    // Return Lowest common denominator of conversion calc
+function convCheckLCD(fracNumTemp) {
+    if (fracNumTemp == 16) {
+        console.log('first');
+        fracNum = '';
+    } else if (fracNumTemp > 0 && fracNumTemp % 8 == 0) {
+        console.log('second');
+        fracNum = '1/2';
+        console.log(typeof fracNum);
+    } else if (fracNumTemp > 0 && fracNumTemp % 4 == 0) {
+        console.log('third');
+        fracNum = (fracNum / 4).toString() + '/4';
+    } else if (fracNumTemp > 0 && fracNumTemp % 2 == 0) {
+        console.log('last');
+        fracNum = (fracNum / 2).toString() + '/8';
+    } else {
+        fracNum = fracNum.toString() + '/16';
+    }
+}
+
     //Convert improper fractions in inches to mm - Fractional to mixed numbers
     // USE ONLY OBJECTS FROM THE MATH.FRACTION() AS INPUT
 function fracMix(fracValue, fracWrite) {
