@@ -41,16 +41,6 @@ const calcDec = document.getElementById('calcDec');
 const calcFrac = document.getElementById('calcFrac');
 
     //dropdown menu divs
-<<<<<<< Updated upstream
-const ToolSelector = document.getElementById('toolSelector');
-toolSelector.addEventListener('click', function() {toolMenu()});
-document.getElementById('conversionSelector').addEventListener('click', function() {converterMenu()});
-document.getElementById('opValue').addEventListener('click', function() {opMenu()});
-
-    // Event listener to close dropdown menu if user clicks outside
-window.addEventListener('click', function(){hideDropDown()});
-let i = 0;
-=======
 const toolSelector = document.getElementById('toolSelector');
     // toolMenu open
 toolSelector.addEventListener('click', function() {document.getElementById('toolDropDown').classList.toggle('hidden')});
@@ -61,7 +51,6 @@ document.getElementById('opValue').addEventListener('click', function(){document
 
     // Event listener to close dropdown menu if user clicks outside
 window.addEventListener('click', function() {dropDownIterator(event)});
->>>>>>> Stashed changes
 
     //Refresh button
 document.getElementById('refresh').addEventListener('click', function(){refresh()});
@@ -132,58 +121,6 @@ uACard.addEventListener('click', function(){refChange(6)});
 
 // TOOL SELECTOR ELEMENTS (TOOL MENU ALWAYS DISPLAYED IN APP)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<<<<<<< Updated upstream
-    // Show/hide tool selection menu by toggling 'hidden' class
-function toolMenu (){
-        document.getElementById('toolDropDown').classList.toggle('hidden');
-}
-    //Change header text of ToolSelector based on which option is chosen
-function toolChange () {
-        toolName.innerHTML = event.target.innerHTML;
-        document.getElementById('toolDropDown').classList.add('hidden');
-        switch (toolName.innerHTML) {
-            case "Measurement Converter":
-                refPages.forEach(refPage => refPage.classList.add('hidden'));
-                refPages[0].classList.remove('hidden');
-                backButton.classList.add('hidden');
-                toolSelector.style['border-radius'] = "4px 4px 0px 0px";
-                break;
-            case "Fractional Calculator":
-                refPages.forEach(refPage => refPage.classList.add('hidden'));
-                refPages[1].classList.remove('hidden');
-                backButton.classList.add('hidden');
-                toolSelector.style['border-radius'] = "4px 4px 4px 4px";
-                break;
-            case "Reference Manuals":
-                refPages.forEach(refPage => refPage.classList.add('hidden'));
-                refPages[2].classList.remove('hidden');
-                backButton.classList.add('hidden');
-                toolSelector.style['border-radius'] = "4px 4px 4px 4px";
-                break;
-        }
-}
-    //Hide dropdown menu if user clicks outside of it
-function hideDropDown () {
-        document.getElementById('toolDD').addEventListener('click', function(){clear()});
-        document.getElementById('conversionDD').addEventListener('click', function(){clear()});
-        document.getElementById('opDropDown').addEventListener('click', function(){clear()});
-        if (i >= 1 && !document.getElementById('toolDropDown').classList.contains('hidden')) {
-            document.getElementById('toolDropDown').classList.toggle('hidden');
-            i = 0;
-        } else if (i >= 1 && !document.getElementById('converterDropDown').classList.contains('hidden')) {
-            document.getElementById('converterDropDown').classList.toggle('hidden');
-            i = 0;
-        } else if (i >= 1 && !document.getElementById('opDropDown').classList.contains('hidden')) {
-            document.getElementById('opDropDown').classList.toggle('hidden');
-            i = 0;
-        } else{
-            i++;
-        }
-    
-        function clear () {
-            i = 0;
-        }    
-=======
 
     //Change header text of ToolSelector based on which option is chosen
 function toolChange () {
@@ -250,7 +187,6 @@ function hideDropDown (i) {
         document.getElementById('opDropDown').classList.add('hidden');
     }
 
->>>>>>> Stashed changes
 }
 
 //MEASUREMENT CONVERSION ELEMENTS
