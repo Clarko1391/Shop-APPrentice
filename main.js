@@ -153,19 +153,11 @@ function toolChange () {
 
     // Create iterator variable 'i' to track if a dropdown is open and a user clicks outside of it
 function dropDownIterator(event) {
+    let selectors = ["toolSelector", "toolName", "toolDD", "conversionSelector", "conversion", "conversionDD", "operationSelector", "opValue", "opSelect"]
     let i;
-    if ((event.target.id === "toolSelector")
-        || (event.target.id === "toolName")
-        || (event.target.id === "toolDD")) {
+    let x = event.target.id;
+    if (selectors.includes(x)) {
             i = 1
-    } else if ((event.target.id === "conversionSelector")
-        || (event.target.id === "conversion")
-        || (event.target.id === "conversionDD")) {
-        i = 1
-    } else if ((event.target.id === "operationSelector")
-        || (event.target.id === "opValue")
-        || (event.target.id === "opSelect")) {
-        i = 1
     } else {
         i = 0
     }
@@ -174,16 +166,14 @@ function dropDownIterator(event) {
 
     // take in iterator state and check if drop down is open for each of the 3 dropdown divs. if it is open and user clicks outside, close the div
 function hideDropDown (i) {
-    i = i;
-    console.log(i);
     const toolDropDownOpen = !document.getElementById('toolDropDown').classList.contains('hidden');
     const converterDropDownOpen = !document.getElementById('converterDropDown').classList.contains('hidden');
     const opDropDownOpen = !document.getElementById('opDropDown').classList.contains('hidden');
-    if (i == 0 && toolDropDownOpen == true) {
+    if (i == 0 && toolDropDownOpen) {
         document.getElementById('toolDropDown').classList.add('hidden');
-    } else if (i == 0 && converterDropDownOpen == true) {
+    } else if (i == 0 && converterDropDownOpen) {
         document.getElementById('converterDropDown').classList.add('hidden');
-    } else if (i == 0 && opDropDownOpen == true) {
+    } else if (i == 0 && opDropDownOpen) {
         document.getElementById('opDropDown').classList.add('hidden');
     }
 

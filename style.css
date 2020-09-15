@@ -101,7 +101,6 @@ header h2{
     background-color: var(--darkish);
     color: var(--light);
     z-index: 2;
-    padding: 0px 10px;
 }
 
 #toolDD {
@@ -125,7 +124,7 @@ header h2{
 
 .toolDDItem {
     font-size: 2vh;
-    padding: 5px 0px;
+    padding: 5px 10px;
 }
 
 /* Section Elements */
