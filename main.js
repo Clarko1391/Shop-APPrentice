@@ -41,6 +41,7 @@ const calcDec = document.getElementById('calcDec');
 const calcFrac = document.getElementById('calcFrac');
 
     //dropdown menu divs
+<<<<<<< Updated upstream
 const ToolSelector = document.getElementById('toolSelector');
 toolSelector.addEventListener('click', function() {toolMenu()});
 document.getElementById('conversionSelector').addEventListener('click', function() {converterMenu()});
@@ -49,6 +50,18 @@ document.getElementById('opValue').addEventListener('click', function() {opMenu(
     // Event listener to close dropdown menu if user clicks outside
 window.addEventListener('click', function(){hideDropDown()});
 let i = 0;
+=======
+const toolSelector = document.getElementById('toolSelector');
+    // toolMenu open
+toolSelector.addEventListener('click', function() {document.getElementById('toolDropDown').classList.toggle('hidden')});
+    // converterMenu open
+document.getElementById('conversionSelector').addEventListener('click', function(){document.getElementById('converterDropDown').classList.toggle('hidden')});
+    //opMenu open
+document.getElementById('opValue').addEventListener('click', function(){document.getElementById('opDropDown').classList.remove('hidden')});
+
+    // Event listener to close dropdown menu if user clicks outside
+window.addEventListener('click', function() {dropDownIterator(event)});
+>>>>>>> Stashed changes
 
     //Refresh button
 document.getElementById('refresh').addEventListener('click', function(){refresh()});
@@ -119,6 +132,7 @@ uACard.addEventListener('click', function(){refChange(6)});
 
 // TOOL SELECTOR ELEMENTS (TOOL MENU ALWAYS DISPLAYED IN APP)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< Updated upstream
     // Show/hide tool selection menu by toggling 'hidden' class
 function toolMenu (){
         document.getElementById('toolDropDown').classList.toggle('hidden');
@@ -169,14 +183,79 @@ function hideDropDown () {
         function clear () {
             i = 0;
         }    
+=======
+
+    //Change header text of ToolSelector based on which option is chosen
+function toolChange () {
+    toolName.innerHTML = event.target.innerHTML;
+    document.getElementById('toolDropDown').classList.add('hidden');
+    switch (toolName.innerHTML) {
+        case "Measurement Converter":
+            refPages.forEach(refPage => refPage.classList.add('hidden'));
+            refPages[0].classList.remove('hidden');
+            backButton.classList.add('hidden');
+            toolSelector.classList.add('topBorderRadius');
+            toolSelector.classList.remove('allBorderRadius');
+            break;
+        case "Fractional Calculator":
+            refPages.forEach(refPage => refPage.classList.add('hidden'));
+            refPages[1].classList.remove('hidden');
+            backButton.classList.add('hidden');
+            toolSelector.classList.remove('topBorderRadius');
+            toolSelector.classList.add('allBorderRadius');
+            break;
+        case "Reference Manuals":
+            refPages.forEach(refPage => refPage.classList.add('hidden'));
+            refPages[2].classList.remove('hidden');
+            backButton.classList.add('hidden');
+            toolSelector.classList.remove('topBorderRadius');
+            toolSelector.classList.add('allBorderRadius');
+            break;
+    }
+}
+
+    // Create iterator variable 'i' to track if a dropdown is open and a user clicks outside of it
+function dropDownIterator(event) {
+    let i;
+    if ((event.target.id === "toolSelector")
+        || (event.target.id === "toolName")
+        || (event.target.id === "toolDD")) {
+            i = 1
+    } else if ((event.target.id === "conversionSelector")
+        || (event.target.id === "conversion")
+        || (event.target.id === "conversionDD")) {
+        i = 1
+    } else if ((event.target.id === "operationSelector")
+        || (event.target.id === "opValue")
+        || (event.target.id === "opSelect")) {
+        i = 1
+    } else {
+        i = 0
+    }
+    hideDropDown(i);
+}
+
+    // take in iterator state and check if drop down is open for each of the 3 dropdown divs. if it is open and user clicks outside, close the div
+function hideDropDown (i) {
+    i = i;
+    console.log(i);
+    const toolDropDownOpen = !document.getElementById('toolDropDown').classList.contains('hidden');
+    const converterDropDownOpen = !document.getElementById('converterDropDown').classList.contains('hidden');
+    const opDropDownOpen = !document.getElementById('opDropDown').classList.contains('hidden');
+    if (i == 0 && toolDropDownOpen == true) {
+        document.getElementById('toolDropDown').classList.add('hidden');
+    } else if (i == 0 && converterDropDownOpen == true) {
+        document.getElementById('converterDropDown').classList.add('hidden');
+    } else if (i == 0 && opDropDownOpen == true) {
+        document.getElementById('opDropDown').classList.add('hidden');
+    }
+
+>>>>>>> Stashed changes
 }
 
 //MEASUREMENT CONVERSION ELEMENTS
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Show/hide conversion selection menu by toggling 'hidden' class
-function converterMenu (){
-        document.getElementById('converterDropDown').classList.toggle('hidden');
-}
+
     // constantly grab user input for math functions
 function userInput (){
     if (conversionSelector === "mm to inches" || conversionSelector === 'inches to mm - Decimal') {
@@ -313,17 +392,13 @@ function fracConvert(decimalNum, fracWrite) {
     // Return Lowest common denominator of conversion calc
 function convCheckLCD(fracNumTemp) {
     if (fracNumTemp == 16) {
-        console.log('first');
         fracNum = '';
     } else if (fracNumTemp > 0 && fracNumTemp % 8 == 0) {
-        console.log('second');
         fracNum = '1/2';
         console.log(typeof fracNum);
     } else if (fracNumTemp > 0 && fracNumTemp % 4 == 0) {
-        console.log('third');
         fracNum = (fracNum / 4).toString() + '/4';
     } else if (fracNumTemp > 0 && fracNumTemp % 2 == 0) {
-        console.log('last');
         fracNum = (fracNum / 2).toString() + '/8';
     } else {
         fracNum = fracNum.toString() + '/16';
@@ -344,10 +419,7 @@ function fracMix(fracValue, fracWrite) {
 
 // Fractional Calculator Elements
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Show/hide operation selection menu by toggling 'hidden' class
-function opMenu (){
-    document.getElementById('opDropDown').classList.remove('hidden');
-}
+
     // Change Math operator in opValue 
 function opChange (){
     opSelector = event.target.innerHTML;
