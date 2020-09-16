@@ -3,13 +3,7 @@
     //user entry and math variables (for both converter and calculator)
 const userEntry = document.getElementById('userEntry');
 userEntry.addEventListener('input', userInput);
-// let fracValue,
-//     fracAnswer,
-//     decimalNum,
-//     decValue,
-//     wholeNum,
-//     fracNum,
-//     fracWrite = '';
+
 ////////////////////////////////////////////////////////////////////////
 const calcIn1 = document.getElementById('calcIn1');
 calcIn1.addEventListener('input', calcInput1);
@@ -172,8 +166,7 @@ function userInput () {
     let measurement = '';
     if (conversionSelector === "mm to inches" || conversionSelector === 'inches to mm - Decimal') {
         userEntry.setAttribute('type', 'number');
-        measurement = userEntry.value;
-        measurement = parseInt(measurement);
+        measurement = math.number(userEntry.value);
         convert(measurement);
 
     } else if (conversionSelector === "inches to mm - Fractional") {
@@ -181,6 +174,7 @@ function userInput () {
         userString = userEntry.value;
         measurement = math.fraction(userString);
         measurement = math.number(measurement);
+        console.log(measurement);
         convert(measurement);
     }
 }
@@ -194,18 +188,13 @@ function refresh() {
     decMMUp.innerHTML = "+1";
     decMMDown.innerHTML = "-1";
     fracInch.innerHTML = "Conversion";
-    fracInchUp.innerHTML = "+1";
-    fracInchDown.innerHTML = "-1";
+    fracInchUp.innerHTML = "+1/16";
+    fracInchDown.innerHTML = "-1/16";
 }
     //Change header text of conversion and placeholder based on which option is chosen
 function convChange () {
         conversionSelector = event.target.innerHTML;
         conversion.innerHTML = conversionSelector;
-        pHChange();
-        document.getElementById('converterDropDown').classList.add('hidden');
-}
-
-function pHChange() {
         switch (conversionSelector) {
             case 'mm to inches':
                 userEntry.setAttribute('placeholder', 'Enter decimal mm value');
@@ -217,7 +206,9 @@ function pHChange() {
                 userEntry.setAttribute('placeholder', 'Enter fractional inch value');
                 break;
         }
+        document.getElementById('converterDropDown').classList.add('hidden');
 }
+
     //Conversion between mm to inches and vice versa in both decimal and fractional
 function convert(measurement) {
         //declare local variables to keep them from becoming globals
@@ -262,22 +253,18 @@ function convert(measurement) {
             answer = measurement / 0.0393701;
             answerUp = oneUp / 0.0393701;
             answerDown = oneDown / 0.0393701;
-            fracUpCalc = math.fraction(math.add(math.fraction(userString), math.fraction('1/16')));
-            fracMix(fracUpCalc, fracInchUp);
-            fracDownCalc = math.fraction(math.subtract(math.fraction(userString), math.fraction('1/16')));
-            fracMix(fracDownCalc, fracInchDown);
-            answer = +answer.toFixed(2);
-            answerUp = +answerUp.toFixed(2);
-            answerDown = +answerDown.toFixed(2);
-            oneUp = +oneUp.toFixed(2);
-            oneDown = +oneDown.toFixed(2);
-            decMM.innerHTML = answer;
-            decMMUp.innerHTML = answerUp;
-            decMMDown.innerHTML = answerDown;
+            decMM.innerHTML = +answer.toFixed(2);
+            decMMUp.innerHTML = +answerUp.toFixed(2);
+            decMMDown.innerHTML = +answerDown.toFixed(2);
+            decInchUp.innerHTML = +oneUp.toFixed(2);
+            decInchDown.innerHTML = +oneDown.toFixed(2);
             decInch.innerHTML = measurement;
-            decInchUp.innerHTML = oneUp;
-            decInchDown.innerHTML = oneDown;
             fracInch.innerHTML = userString;
+            fracUpCalc = math.fraction(math.add(math.fraction(userString), 0.0625));
+            console.log(fracUpCalc);
+            fracMix(fracUpCalc, fracInchUp);
+            fracDownCalc = math.fraction(math.subtract(math.fraction(userString), 0.0625));
+            fracMix(fracDownCalc, fracInchDown);
     }
     
 }
@@ -328,23 +315,32 @@ let fracConvert = (value, element) => {
 
     //Convert improper fractions in inches to mm - Fractional to mixed numbers
     // USE ONLY OBJECTS FROM THE MATH.FRACTION() AS INPUT
-function fracMix(fracValue, fracWrite) {
-        if (fracValue.n > 16) {
-            wholeNum = Math.floor(fracValue.n / 16);
-            fracNum = fracValue.n % 16;
-            fracWrite.innerHTML = wholeNum + ' ' + fracNum + '/' + fracValue.d;
+function fracMix(fracCalc, element) {
+    if (fracCalc.d > 16) {
+        if (fracCalc.n > fracCalc.d) {
+            wholeNum = Math.floor(fracCalc.n / fracCalc.d);
+            fracNum = fracCalc.n % fracCalc.d;
+            element.innerHTML = `${wholeNum} ${fracNum}/${fracCalc.d}`;
         } else {
-            fracWrite.innerHTML = fracValue.n + '/' + fracValue.d;
+            element.innerHTML = `${fracCalc.n}/${fracCalc.d}`;
         }
+    } else {
+        if (fracCalc.n > 16) {
+            wholeNum = Math.floor(fracCalc.n / 16);
+            fracNum = fracCalc.n % 16;
+            element.innerHTML = `${wholeNum} ${fracNum}/16`;
+        } else {
+            element.innerHTML = `${fracCalc.n}/16`;
+        }
+    }
 }
 
 // Fractional Calculator Elements
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Change Math operator in opValue 
-function opChange (){
-    opSelector = event.target.innerHTML;
-    opValue.innerHTML = opSelector;
+function opChange () {
+    opValue.innerHTML = event.target.innerHTML;
     document.getElementById('opDropDown').classList.add('hidden');
 }
     //  Grab values from both calc inputs
