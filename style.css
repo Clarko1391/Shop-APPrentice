@@ -80,6 +80,13 @@ header h2{
     background-image: var(--gradient);
     position: relative;
     cursor: pointer;
+}
+
+.allBorderRadius{
+    border-radius: 4px;
+}
+
+.topBorderRadius {
     border-radius: 4px 4px 0px 0px;
 }
 
@@ -510,7 +517,7 @@ input:focus {
     height: 100%;
     width: 75%;
     display: grid;
-    grid: auto / auto auto;
+    grid: auto / auto;
     gap: 20px;
     justify-items: center;
     align-items: center;
@@ -688,10 +695,6 @@ footer {
 /* Media Queries */
 
 @media screen and (max-width: 600px) {
-    .gridBox {
-        grid: auto / auto;
-        overflow-y: scroll;
-    }
 
     .refPage {
     overflow-y: scroll;

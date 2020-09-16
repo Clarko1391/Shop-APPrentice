@@ -3,19 +3,18 @@
     //user entry and math variables (for both converter and calculator)
 const userEntry = document.getElementById('userEntry');
 userEntry.addEventListener('input', userInput);
-let measurement,
-    fracValue,
-    fracAnswer,
-    decimalNum,
-    decValue,
-    wholeNum,
-    fracNum,
-    fracWrite = '';
+// let fracValue,
+//     fracAnswer,
+//     decimalNum,
+//     decValue,
+//     wholeNum,
+//     fracNum,
+//     fracWrite = '';
 ////////////////////////////////////////////////////////////////////////
 const calcIn1 = document.getElementById('calcIn1');
-calcIn1.addEventListener('input', function(){calcInput1()});
+calcIn1.addEventListener('input', calcInput1);
 const calcIn2 = document.getElementById('calcIn2');
-calcIn2.addEventListener('input', function(){calcInput2()});
+calcIn2.addEventListener('input', calcInput2);
 let calcValue1,
     calcVlaue2,
     calcDecimal, 
@@ -43,52 +42,42 @@ const calcFrac = document.getElementById('calcFrac');
     //dropdown menu divs
 const toolSelector = document.getElementById('toolSelector');
     // toolMenu open
-toolSelector.addEventListener('click', function() {document.getElementById('toolDropDown').classList.toggle('hidden')});
+toolSelector.addEventListener('click', () => document.getElementById('toolDropDown').classList.toggle('hidden'));
     // converterMenu open
-document.getElementById('conversionSelector').addEventListener('click', function(){document.getElementById('converterDropDown').classList.toggle('hidden')});
+document.getElementById('conversionSelector').addEventListener('click', () => document.getElementById('converterDropDown').classList.toggle('hidden'));
     //opMenu open
-document.getElementById('opValue').addEventListener('click', function(){document.getElementById('opDropDown').classList.remove('hidden')});
+document.getElementById('opValue').addEventListener('click', () => document.getElementById('opDropDown').classList.remove('hidden'));
 
     // Event listener to close dropdown menu if user clicks outside
 window.addEventListener('click', function() {dropDownIterator(event)});
 
     //Refresh button
-document.getElementById('refresh').addEventListener('click', function(){refresh()});
+document.getElementById('refresh').addEventListener('click', refresh);
 
     // toolSelector and changers
-let toolName = document.getElementById('toolName');
-const tDD1 = document.getElementById('tDD1');
-tDD1.addEventListener('click', function (){toolChange()});
-const tDD2 = document.getElementById('tDD2');
-tDD2.addEventListener('click', function (){toolChange()});
-const tDD3 = document.getElementById('tDD3');
-tDD3.addEventListener('click', function (){toolChange()});
+const toolName = document.getElementById('toolName');
+document.getElementById('tDD1').addEventListener('click', toolChange);
+document.getElementById('tDD2').addEventListener('click', toolChange);
+document.getElementById('tDD3').addEventListener('click', toolChange);
 
 
     // conversionSelector and changers
-let conversion = document.getElementById('conversion');
+const conversion = document.getElementById('conversion');
 let conversionSelector = document.getElementById('conversion').innerHTML;
-const cDD1 = document.getElementById('cDD1');
-cDD1.addEventListener('click', function() {convChange()});
-const cDD2 = document.getElementById('cDD2');
-cDD2.addEventListener('click', function() {convChange()});
-const cDD3 = document.getElementById('cDD3');
-cDD3.addEventListener('click', function() {convChange()});
+document.getElementById('cDD1').addEventListener('click', convChange);
+document.getElementById('cDD2').addEventListener('click', convChange);
+document.getElementById('cDD3').addEventListener('click', convChange);
 
     //Operator Selectors and changers
-let opValue = document.getElementById('opValue');
-const opDD1 = document.getElementById('opDD1');
-opDD1.addEventListener('click', function() {opChange()});
-const opDD2 = document.getElementById('opDD2');
-opDD2.addEventListener('click', function() {opChange()});
-const opDD3 = document.getElementById('opDD3');
-opDD3.addEventListener('click', function() {opChange()});
-const opDD4 = document.getElementById('opDD4');
-opDD4.addEventListener('click', function() {opChange()});
+const opValue = document.getElementById('opValue');
+document.getElementById('opDD1').addEventListener('click', opChange);
+document.getElementById('opDD2').addEventListener('click', opChange);
+document.getElementById('opDD3').addEventListener('click', opChange);
+document.getElementById('opDD4').addEventListener('click', opChange);
 
     // Calculator input clear
-document.getElementById('calcIn1Reset').addEventListener('click', function() {clearIn1()});
-document.getElementById('calcIn2Reset').addEventListener('click', function() {clearIn2()});
+document.getElementById('calcIn1Reset').addEventListener('click', clearIn1);
+document.getElementById('calcIn2Reset').addEventListener('click', clearIn2);
 
     // Page selectors (section tags)
 const cSBody = document.getElementById('cSBody');
@@ -105,17 +94,13 @@ const refPages = [cSBody, fCBody, rMBody, tCBody, wSBody, dSBody, uABody];
     // Back Button for refence manual
 const backButton = document.getElementById('backButton');
 const backBtn = document.getElementById('backBtn');
-backBtn.addEventListener('click', function(){goBack()});
+backBtn.addEventListener('click', goBack);
 
     // Chart Selectors (clicking on card will bring up chart)
-const tCCard = document.getElementById('tCCard');
-tCCard.addEventListener('click', function(){refChange(3)});
-const wSCard = document.getElementById('wSCard');
-wSCard.addEventListener('click', function(){refChange(4)});
-const dSCard = document.getElementById('dSCard');
-dSCard.addEventListener('click', function(){refChange(5)});
-const uACard = document.getElementById('uACard');
-uACard.addEventListener('click', function(){refChange(6)});
+document.getElementById('tCCard').addEventListener('click', function(){refChange(3)});
+document.getElementById('wSCard').addEventListener('click', function(){refChange(4)});
+document.getElementById('dSCard').addEventListener('click', function(){refChange(5)});
+document.getElementById('uACard').addEventListener('click', function(){refChange(6)});
 
 // Functions
 
@@ -123,7 +108,7 @@ uACard.addEventListener('click', function(){refChange(6)});
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Change header text of ToolSelector based on which option is chosen
-function toolChange () {
+function toolChange() {
     toolName.innerHTML = event.target.innerHTML;
     document.getElementById('toolDropDown').classList.add('hidden');
     switch (toolName.innerHTML) {
@@ -152,7 +137,7 @@ function toolChange () {
 }
 
     // Create iterator variable 'i' to track if a dropdown is open and a user clicks outside of it
-function dropDownIterator(event) {
+let dropDownIterator = event => {
     let selectors = ["toolSelector", "toolName", "toolDD", "conversionSelector", "conversion", "conversionDD", "operationSelector", "opValue", "opSelect"]
     let i;
     let x = event.target.id;
@@ -161,11 +146,11 @@ function dropDownIterator(event) {
     } else {
         i = 0
     }
-    hideDropDown(i);
+    return hideDropDown(i);
 }
 
     // take in iterator state and check if drop down is open for each of the 3 dropdown divs. if it is open and user clicks outside, close the div
-function hideDropDown (i) {
+let hideDropDown =  i => {
     const toolDropDownOpen = !document.getElementById('toolDropDown').classList.contains('hidden');
     const converterDropDownOpen = !document.getElementById('converterDropDown').classList.contains('hidden');
     const opDropDownOpen = !document.getElementById('opDropDown').classList.contains('hidden');
@@ -176,14 +161,15 @@ function hideDropDown (i) {
     } else if (i == 0 && opDropDownOpen) {
         document.getElementById('opDropDown').classList.add('hidden');
     }
-
+    return;
 }
 
 //MEASUREMENT CONVERSION ELEMENTS
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // constantly grab user input for math functions
-function userInput (){
+function userInput () {
+    let measurement = '';
     if (conversionSelector === "mm to inches" || conversionSelector === 'inches to mm - Decimal') {
         userEntry.setAttribute('type', 'number');
         measurement = userEntry.value;
@@ -234,25 +220,25 @@ function pHChange() {
 }
     //Conversion between mm to inches and vice versa in both decimal and fractional
 function convert(measurement) {
+        //declare local variables to keep them from becoming globals
+    let oneUp, oneDown, answer, answerUp, answerDown, fracUpCalc, fracDownCalc = '';
+    // let fracValue, fracAnswer, decimalNum, decValue, wholeNum, fracNum, fracWrite = '';
     switch (conversionSelector) {
         case "mm to inches":
-            decMM.innerHTML = measurement;
             oneUp = (measurement + 1);
-            decMMUp.innerHTML = oneUp;
             oneDown = (measurement - 1);
-            decMMDown.innerHTML = oneDown;
             answer = measurement * 0.0393701;
             answerUp = oneUp * 0.0393701;
             answerDown = oneDown * 0.0393701;
+            decMM.innerHTML = measurement;
+            decMMUp.innerHTML = oneUp;
+            decMMDown.innerHTML = oneDown;
+            decInch.innerHTML = +answer.toFixed(2);
+            decInchUp.innerHTML = +answerUp.toFixed(2);
+            decInchDown.innerHTML = +answerDown.toFixed(2);
             fracConvert(answer, fracInch);
             fracConvert(answerUp, fracInchUp);
             fracConvert(answerDown, fracInchDown);
-            answer = +answer.toFixed(2);
-            answerUp = +answerUp.toFixed(2);
-            answerDown = +answerDown.toFixed(2);
-            decInch.innerHTML = answer;
-            decInchUp.innerHTML = answerUp;
-            decInchDown.innerHTML = answerDown;
             break;
         case "inches to mm - Decimal":
             oneUp = (measurement + .0625);
@@ -260,20 +246,15 @@ function convert(measurement) {
             answer = measurement / .0393701;
             answerUp = oneUp / .0393701;
             answerDown = oneDown / .0393701;
+            decMM.innerHTML = +answer.toFixed(2);
+            decMMUp.innerHTML = +answerUp.toFixed(2);
+            decMMDown.innerHTML = +answerDown.toFixed(2);
+            decInchUp.innerHTML = +oneUp.toFixed(2);
+            decInchDown.innerHTML = +oneDown.toFixed(2);
+            decInch.innerHTML = measurement;
             fracConvert(measurement, fracInch);
             fracConvert(oneUp, fracInchUp);
             fracConvert(oneDown, fracInchDown);
-            answer = +answer.toFixed(2);
-            answerUp = +answerUp.toFixed(2);
-            answerDown = +answerDown.toFixed(2);
-            oneUp = +oneUp.toFixed(2);
-            oneDown = +oneDown.toFixed(2);
-            decMM.innerHTML = answer;
-            decMMUp.innerHTML = answerUp;
-            decMMDown.innerHTML = answerDown;
-            decInchUp.innerHTML = oneUp;
-            decInch.innerHTML = measurement;
-            decInchDown.innerHTML = oneDown;
             break;
         case "inches to mm - Fractional":   
             oneUp = (measurement + 0.0625);
@@ -301,35 +282,49 @@ function convert(measurement) {
     
 }
 
-    //Display decimal remainders as fractions in 16ths of an inch
-function fracConvert(decimalNum, fracWrite) {
-    decValue = decimalNum - Math.floor(decimalNum);
-    wholeNum = Math.floor(decimalNum);
-    fracNum = Math.round(decValue * 16);
-    convCheckLCD(fracNum);
-    if (wholeNum > 0) {
-        fracWrite.innerHTML = wholeNum + ' ' + fracNum;
+    //Display decimal remainders as fractions in 16ths of an inch as well as converting to the lowest common denominator of the fraction
+// Declare local variables to keep them from becoming globals, write parameters to new variables for better readability
+let fracConvert = (value, element) => {
+    let decimalNum = value;
+    let decValue = decimalNum - Math.floor(decimalNum);
+    let wholeNum = Math.floor(decimalNum);
+    let fracNum = Math.round(decValue * 16);
+    
+    if (fracNum == 16) {
+        fracNum = ``;
+    } else if (fracNum > 0 && fracNum % 8 == 0) {
+        fracNum = `1/2`;
+    } else if (fracNum > 0 && fracNum % 4 == 0) {
+        fracNum = `${fracNum / 4}/4`;
+    } else if (fracNum > 0 && fracNum % 2 == 0) {
+        fracNum = `${fracNum / 2}/8`;
     } else {
-        fracWrite.innerHTML = fracNum;
+        fracNum = `${fracNum}/16`;
     }
-        
+
+    if (wholeNum > 0) {
+        element.innerHTML = `${wholeNum} ${fracNum}`;
+    } else { 
+        element.innerHTML = `${fracNum}`;
+    }
+    return;
 }
 
-    // Return Lowest common denominator of conversion calc
-function convCheckLCD(fracNumTemp) {
-    if (fracNumTemp == 16) {
-        fracNum = '';
-    } else if (fracNumTemp > 0 && fracNumTemp % 8 == 0) {
-        fracNum = '1/2';
-        console.log(typeof fracNum);
-    } else if (fracNumTemp > 0 && fracNumTemp % 4 == 0) {
-        fracNum = (fracNum / 4).toString() + '/4';
-    } else if (fracNumTemp > 0 && fracNumTemp % 2 == 0) {
-        fracNum = (fracNum / 2).toString() + '/8';
-    } else {
-        fracNum = fracNum.toString() + '/16';
-    }
-}
+// function convCheckLCD(fracNumTemp, fracNum) {
+//     fracNum = String(fracNum);
+//     if (fracNumTemp == 16) {
+//         fracNum = '';
+//     } else if (fracNumTemp > 0 && fracNumTemp % 8 == 0) {
+//         fracNum = '1/2';
+//     } else if (fracNumTemp > 0 && fracNumTemp % 4 == 0) {
+//         fracNum = `${fracNum / 4}/4`;
+//     } else if (fracNumTemp > 0 && fracNumTemp % 2 == 0) {
+//         fracNum = `${fracNum / 2}/8`;
+//     } else {
+//         fracNum = `${fracNum}/16`;
+//     }
+//     console.log(fracNum);
+// }
 
     //Convert improper fractions in inches to mm - Fractional to mixed numbers
     // USE ONLY OBJECTS FROM THE MATH.FRACTION() AS INPUT
