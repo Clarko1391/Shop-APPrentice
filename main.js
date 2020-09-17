@@ -6,18 +6,9 @@ userEntry.addEventListener('input', userInput);
 
 ////////////////////////////////////////////////////////////////////////
 const calcIn1 = document.getElementById('calcIn1');
-calcIn1.addEventListener('input', calcInput1);
+calcIn1.addEventListener('input', calcInput);
 const calcIn2 = document.getElementById('calcIn2');
-calcIn2.addEventListener('input', calcInput2);
-let calcValue1,
-    calcVlaue2,
-    calcDecimal, 
-    calcWhole, 
-    calcFraction, 
-    calcFractionWhole, 
-    calcFractionNumerator, 
-    calcFracWrite,
-    calcFractionWrite = '';
+calcIn2.addEventListener('input', calcInput);
 
     // output values
 const decInch = document.getElementById('decInch');
@@ -160,24 +151,6 @@ let hideDropDown =  i => {
 
 //MEASUREMENT CONVERSION ELEMENTS
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // constantly grab user input for math functions
-// function userInput () {
-//     let measurement = '';
-//     if (conversionSelector === "mm to inches" || conversionSelector === 'inches to mm - Decimal') {
-//         userEntry.setAttribute('type', 'number');
-//         measurement = math.number(userEntry.value);
-//         convert(measurement);
-
-//     } else if (conversionSelector === "inches to mm - Fractional") {
-//         userEntry.setAttribute('type', 'text');
-//         userString = userEntry.value;
-//         measurement = math.fraction(userString);
-//         measurement = math.number(measurement);
-//         console.log(measurement);
-//         convert(measurement);
-//     }
-// }
 
 function userInput() {
     let measurement = '';
@@ -348,47 +321,42 @@ function fracMix(fracCalc, element) {
 function opChange () {
     opValue.innerHTML = event.target.innerHTML;
     document.getElementById('opDropDown').classList.add('hidden');
+    clearIn1();
+    clearIn2();
 }
     //  Grab values from both calc inputs
-function calcInput1 (){
+function calcInput() {
     let calcVerify1 = calcIn1.value;
+    let calcVerify2 = calcIn2.value;
+    let calcValue1, calcValue2 = '';
+        // Generate calcValue1 
     if (calcVerify1.includes('/')) {
         calcValue1 = calcIn1.value;
         calcValue1 = math.fraction(calcValue1);
         calcValue1 = math.number(calcValue1);
-        calcReady();   
     } else if (calcVerify1.includes('.')) {
         calcValue1 = calcIn1.value;
         calcValue1 = math.number(calcValue1);
-        calcReady(); 
     } else {
         calcValue1 = calcIn1.value;
-        calcReady(); 
     }
-}
-
-function calcInput2 (){
-    let calcVerify2 = calcIn2.value;
+        // Generate calcValue2
     if (calcVerify2.includes('/')) {
         calcValue2 = calcIn2.value;
         calcValue2 = math.fraction(calcValue2);
         calcValue2 = math.number(calcValue2);
-        calcReady(); 
     } else if (calcVerify2.includes('.')) {
         calcValue2 = calcIn2.value;
         calcValue2 = math.number(calcValue2);
-        calcReady(); 
     } else {
         calcValue2 = calcIn2.value;
-        calcReady(); 
     }
-}
-    // check if both inputs have values
-function calcReady() {
+        // Verify both inputs have a value and run calculate()
     if (calcValue1 > 0 && calcValue2 > 0) {
-        calculate();
+        calculate(calcValue1, calcValue2);
     }
 }
+
         // Clear calculator inputs
 function clearIn1() {
     document.getElementById('calcIn1').value = '';
@@ -402,77 +370,61 @@ function clearIn2() {
     calcFrac.innerHTML = 'Fractional Result';
 }
     // Calculator Function
-function calculate() {
+let calculate = (calcValue1, calcValue2) => {
     let calcResult = '';
     switch (opValue.innerHTML) {
         case ('+'):
             calcResult = math.number(math.number(calcValue1) + math.number(calcValue2));
-            calcDec.innerHTML = +calcResult.toFixed(2);
+            calcDec.innerHTML = +calcResult.toFixed(3);
             calcFracConvert(calcResult);
             break;
         case ('-'):
             calcResult = math.number(calcValue1 - calcValue2);
-            calcDec.innerHTML = +calcResult.toFixed(2);
+            calcDec.innerHTML = +calcResult.toFixed(3);
             calcFracConvert(calcResult);
             break;
         case ('X'):
             calcResult = math.number(calcValue1 * calcValue2);
-            calcDec.innerHTML = +calcResult.toFixed(2);
+            calcDec.innerHTML = +calcResult.toFixed(3);
             calcFracConvert(calcResult);
             break;
         case ('%'):
             calcResult = math.number(calcValue1 / calcValue2);
-            calcDec.innerHTML = +calcResult.toFixed(2);
+            calcDec.innerHTML = +calcResult.toFixed(3);
             calcFracConvert(calcResult);
             break;
     }
+    return;
 }
     // Convert calcResult to a fraction (x/16)
-function calcFracConvert(calcResult) {
-    calcDecimal = calcResult - Math.floor(calcResult);
-    calcWhole = Math.floor(calcResult);
-    calcFraction = Math.round(calcDecimal * 16);
-
-    if (calcFraction > 16) {
-        calcFractionWhole = calcFraction / 16;
-        calcFractionNumerator = calcFraction % 16;
-    } else calcFractionNumerator = calcFraction;
-
-    calcCheckLCD();
-    
-    if (calcWhole > 0) {
-        calcFracWrite = calcWhole + ' ' + calcFractionWrite;
-    } else {
-        calcFracWrite = calcFractionWrite;
-    }
-    calcWrite ();
-}
-
-    // return lowest common denominator of calc result
-function calcCheckLCD() {
-    if (calcFractionNumerator == 16) {
+let calcFracConvert = calcResult => {
+    let calcDecimal = calcResult - Math.floor(calcResult);
+    let calcWhole = Math.floor(calcResult);
+    let calcNumerator = Math.round(calcDecimal * 16);
+    let calcFractionWrite = '';
+        // Check for LCD and convert to mixed number in template literal
+    if (calcNumerator == 16) {
         calcFractionWrite = '';
-    } else if (calcFractionNumerator > 0 && calcFractionNumerator % 8 == 0) {
+    } else if (calcNumerator > 0 && calcNumerator % 8 == 0) {
         calcFractionWrite = '1/2';
-    } else if (calcFractionNumerator > 0 && calcFractionNumerator % 4 == 0) {
-        calcFractionNumerator = calcFractionNumerator / 4;
-        calcFractionWrite = calcFractionNumerator.toString() + '/4';
-    } else if (calcFractionNumerator > 0 && calcFractionNumerator % 2 == 0) {
-        calcFractionNumerator = calcFractionNumerator / 2;
-        calcFractionWrite = calcFractionNumerator.toString() + '/2';
-    } else if (calcFractionNumerator > 0) {
-        calcFractionWrite = calcFractionNumerator.toString() + '/16';
+    } else if (calcNumerator > 0 && calcNumerator % 4 == 0) {
+        calcFractionWrite = `${calcNumerator / 4}/4`;
+    } else if (calcNumerator > 0 && calcNumerator % 2 == 0) {
+        calcFractionWrite = `${calcNumerator / 2}/8`;
+    } else if (calcNumerator > 0) {
+        calcFractionWrite = `${calcNumerator}/16`;
     } else calcFractionWrite = '';
+        // Write as mixed number if calcResult > 1 or fraction if calcResult < 1
+    if (calcWhole > 0) {
+        calcFrac.innerHTML = `${calcWhole} ${calcFractionWrite}`;
+    } else {
+        calcFrac.innerHTML =`${calcFractionWrite}`;
+    }
 }
 
-function calcWrite() {
-    calcFrac.innerHTML = calcFracWrite;
-}
-
-// Reference Manual Elements
-
-    // Change active reference chart
-function refChange(a) {
+    // Reference Manual Elements
+// Change active reference chart
+let refChange = a => {
     // a will be the index positon of the page to be shown
     refPages.forEach(refPage => refPage.classList.add('hidden'));
     refPages[a].classList.remove('hidden');
@@ -490,6 +442,7 @@ function refChange(a) {
         case 6:
             toolName.innerHTML = 'User Added Reference Chart';
     }
+    return;
 }
     // Ref Charts Back button
 function goBack () {
