@@ -136,7 +136,7 @@ header h2{
     /* Section Elements */
 
 #cSBody {
-    background: url(./img/left.png);
+    background: url(../img/left.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -338,7 +338,7 @@ input:focus {
 /* Fractional Calculator Elements */
 
 #fCBody {
-    background: url(./img/right.png);
+    background: url(../img/right.png);
     background-size: cover;
 }
 
@@ -468,27 +468,27 @@ input:focus {
 }
 
 #rMBody {
-    background: url(./img/right.png);
+    background: url(../img/right.png);
     background-size: cover;
 }
 
 #tCBody {
-    background: url(./img/right.png);
+    background: url(../img/right.png);
     background-size: cover;
 }
 
 #wSBody {
-    background: url(./img/right.png);
+    background: url(../img/right.png);
     background-size: cover;
 }
 
 #dSBody {
-    background: url(./img/right.png);
+    background: url(../img/right.png);
     background-size: cover;
 }
 
 #uABody {
-    background: url(./img/right.png);
+    background: url(../img/right.png);
     background-size: cover;
 }
 
