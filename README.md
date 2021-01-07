@@ -3,10 +3,10 @@ Built to make my life easier while working as a hobbyist furniture-maker, I came
 
 Deisgned in Figma and built from scratch in pure HTML5, CSS3 and Vanilla JS, this was my second major project on my path to becoming a full-stack developer.
 
+![Shop APPrentice ScreenCap](https://github.com/Clarko1391/Shop-APPrentice/blob/master/img/shopAPPrenticeScreenCap1.png)
+
 This version of the app is still usable and is hosted on Github Pages here: https://clarko1391.github.io/Shop-APPrentice/
 You can also clone the repo and use LiveServer in VSCode to run index.html and check out an offline version on your local machine.
 
 
 I have since re-built the core functionality and added new features to this app in different technologies as a means to further develop my skills. Other versions of this app can be found in my other repos called "React-Shop-APPrentice" and "React-Redux-Shop-APPrentice"
-
-
